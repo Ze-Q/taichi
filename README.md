@@ -4,6 +4,7 @@ Taichi Fitness
 An HCI project that focuses on interface design. We are Group 7!
 
 Ze Qian Zhang (ze.q.zhang@mail.mcgill.ca)
+Rafi Uddin (rafi.uddin@mail.mcgill.ca)
 
 All rights reserved © Ze Qian Zhang, Rafi Uddin, Christopher Viboux
 
