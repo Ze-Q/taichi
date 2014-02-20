@@ -18,6 +18,6 @@ Windows 7 64-bit
 HOW TO START TAICHI FITNESS
 =================================
 
-start the shortcut on the root directory
+start the shortcut in the root directory
 
 
