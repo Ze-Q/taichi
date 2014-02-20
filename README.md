@@ -15,8 +15,9 @@ Platforms: The software was written and tested on the following platforms:
 
 Windows 7 64-bit
 
-=================================
 HOW TO START TAICHI FITNESS
 =================================
+
+start the shortcut on the root directory
 
 
