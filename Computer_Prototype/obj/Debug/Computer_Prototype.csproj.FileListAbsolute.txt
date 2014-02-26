@@ -1,0 +1,14 @@
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Debug\Computer_Prototype.exe.config
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Debug\Computer_Prototype.exe
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Debug\Computer_Prototype.pdb
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.csprojResolveAssemblyReference.cache
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.TaichiFitness.resources
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.Properties.Resources.resources
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.GenerateResource.Cache
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.exe
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.pdb
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Debug\Interop.WMPLib.dll
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Debug\AxInterop.WMPLib.dll
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Interop.WMPLib.dll
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\AxInterop.WMPLib.dll
+c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.ResolveComReference.cache
