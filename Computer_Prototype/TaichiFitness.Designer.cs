@@ -242,7 +242,7 @@ namespace Computer_Prototype
             this.buttonForm1.Name = "buttonForm1";
             this.buttonForm1.Size = new System.Drawing.Size(621, 117);
             this.buttonForm1.TabIndex = 0;
-            this.buttonForm1.Text = "Form 1";
+            this.buttonForm1.Text = "Commencing/Preparation";
             this.buttonForm1.UseVisualStyleBackColor = true;
             this.buttonForm1.Click += new System.EventHandler(this.startForm1_Click);
             // 
@@ -255,7 +255,7 @@ namespace Computer_Prototype
             this.buttonForm2.Name = "buttonForm2";
             this.buttonForm2.Size = new System.Drawing.Size(621, 125);
             this.buttonForm2.TabIndex = 1;
-            this.buttonForm2.Text = "Form 2";
+            this.buttonForm2.Text = "Brush Knee and Step Forward";
             this.buttonForm2.UseVisualStyleBackColor = true;
             this.buttonForm2.Click += new System.EventHandler(this.startForm2_Click);
             // 
@@ -268,7 +268,7 @@ namespace Computer_Prototype
             this.buttonForm3.Name = "buttonForm3";
             this.buttonForm3.Size = new System.Drawing.Size(621, 116);
             this.buttonForm3.TabIndex = 2;
-            this.buttonForm3.Text = "Form 3";
+            this.buttonForm3.Text = "Playing the Lut";
             this.buttonForm3.UseVisualStyleBackColor = true;
             this.buttonForm3.Click += new System.EventHandler(this.startForm3_Click);
             // 
@@ -524,9 +524,9 @@ namespace Computer_Prototype
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
+            this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.mainMenuPanel);
             this.Controls.Add(this.highscorePanel);
-            this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.gamePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
