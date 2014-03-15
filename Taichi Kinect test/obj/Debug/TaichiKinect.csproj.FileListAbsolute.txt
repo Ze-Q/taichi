@@ -1,0 +1,9 @@
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\bin\Debug\TaichiKinect.exe.config
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\bin\Debug\TaichiKinect.exe
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\bin\Debug\TaichiKinect.pdb
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.csprojResolveAssemblyReference.cache
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.Properties.Resources.resources
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.TaichiWindow.resources
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.csproj.GenerateResource.Cache
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.exe
+c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.pdb

@@ -40,3 +40,17 @@ C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prot
 C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
 C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
 C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe.config
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Interop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.exe
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.pdb
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.pdb
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Interop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\AxInterop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csprojResolveAssemblyReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
