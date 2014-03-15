@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computer_Prototype", "Computer_Prototype\Computer_Prototype.csproj", "{D490A848-4671-4FFC-808E-903E41C02D02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaichiKinect", "Taichi Kinect test\TaichiKinect.csproj", "{B17BDABC-2484-4B55-9A09-5E2932CFB7A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{D490A848-4671-4FFC-808E-903E41C02D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D490A848-4671-4FFC-808E-903E41C02D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D490A848-4671-4FFC-808E-903E41C02D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17BDABC-2484-4B55-9A09-5E2932CFB7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17BDABC-2484-4B55-9A09-5E2932CFB7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17BDABC-2484-4B55-9A09-5E2932CFB7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17BDABC-2484-4B55-9A09-5E2932CFB7A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,3 +12,17 @@ c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Compute
 c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Interop.WMPLib.dll
 c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\AxInterop.WMPLib.dll
 c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.ResolveComReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Debug\Computer_Prototype.exe.config
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Interop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.ResolveComReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.exe
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.pdb
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Debug\Computer_Prototype.exe
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Debug\Computer_Prototype.pdb
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Debug\Interop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.csprojResolveAssemblyReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.TaichiFitness.resources
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.Properties.Resources.resources
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.GenerateResource.Cache
