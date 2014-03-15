@@ -52,6 +52,9 @@ namespace TaichiKinect
                 this.colorPixels = new byte[this.kinect.ColorStream.FramePixelDataLength];
                 //this.colorBitmap = new WriteableBitmap(this.sensor.ColorStream.FrameWidth, this.kinect.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
                 this.kinect.ColorFrameReady += this.kinectSensorColorFrameReady;//this.kinectSensorColorFrameReady;
+
+
+                // this is a test
                
                 // start the kinect              
                this.kinect.Start();           
