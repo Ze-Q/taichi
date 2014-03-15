@@ -30,8 +30,6 @@ namespace Computer_Prototype
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("./misc/nature_sounds.wav");
             player.PlayLooping();
             //player.Play();
-            this.pictureBox1.Image = Image.FromFile("./misc/mainmenu.png");
-            this.pictureBox2.Image = Image.FromFile("./misc/fallout_boy.jpg");
             //Cursor myCursor = new Cursor("myCursor.cur");
             //myControl.Cursor = myCursor;
             //this.Cursor = Cursor.
@@ -224,6 +222,11 @@ namespace Computer_Prototype
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainMenuTableLayout_Paint(object sender, PaintEventArgs e)
         {
 
         }
