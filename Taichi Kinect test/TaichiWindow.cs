@@ -18,7 +18,7 @@ namespace TaichiKinect
         public KinectSensor kinect;
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
-        private WriteableBitmap colorBitmap;
+        private System.Windows.Media.Imaging.WriteableBitmap colorBitmap;
 
         
         public TaichiWindow()
@@ -50,6 +50,7 @@ namespace TaichiKinect
 
                 // set up color stream
                 this.colorPixels = new byte[this.kinect.ColorStream.FramePixelDataLength];
+                //this.colorBitmap = new WriteableBitmap(this.sensor.ColorStream.FrameWidth, this.kinect.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
                 this.kinect.ColorFrameReady += this.kinectSensorColorFrameReady;//this.kinectSensorColorFrameReady;
                
                 // start the kinect              

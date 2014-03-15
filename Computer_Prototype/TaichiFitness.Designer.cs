@@ -80,7 +80,7 @@ namespace Computer_Prototype
             // 
             this.tutorialButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tutorialButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tutorialButton.Location = new System.Drawing.Point(121, 386);
+            this.tutorialButton.Location = new System.Drawing.Point(115, 345);
             this.tutorialButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tutorialButton.Name = "tutorialButton";
             this.tutorialButton.Size = new System.Drawing.Size(849, 80);
@@ -93,7 +93,7 @@ namespace Computer_Prototype
             // 
             this.playButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.playButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playButton.Location = new System.Drawing.Point(121, 494);
+            this.playButton.Location = new System.Drawing.Point(115, 453);
             this.playButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(849, 82);
@@ -106,7 +106,7 @@ namespace Computer_Prototype
             // 
             this.quitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.quitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quitButton.Location = new System.Drawing.Point(121, 607);
+            this.quitButton.Location = new System.Drawing.Point(115, 566);
             this.quitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.quitButton.Name = "quitButton";
             this.quitButton.Size = new System.Drawing.Size(849, 82);
@@ -122,10 +122,10 @@ namespace Computer_Prototype
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.titleLabel.Location = new System.Drawing.Point(317, 0);
+            this.titleLabel.Location = new System.Drawing.Point(311, 0);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(458, 73);
+            this.titleLabel.Size = new System.Drawing.Size(458, 65);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "Tai Chi Fitness";
             this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
@@ -155,7 +155,7 @@ namespace Computer_Prototype
             this.mainMenuTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.mainMenuTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.mainMenuTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.mainMenuTableLayout.Size = new System.Drawing.Size(1092, 701);
+            this.mainMenuTableLayout.Size = new System.Drawing.Size(1080, 660);
             this.mainMenuTableLayout.TabIndex = 4;
             this.mainMenuTableLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.mainMenuTableLayout_Paint);
             // 
@@ -164,10 +164,10 @@ namespace Computer_Prototype
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(4, 78);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 70);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1084, 295);
+            this.pictureBox1.Size = new System.Drawing.Size(1072, 262);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -277,7 +277,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 341F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -310,7 +310,7 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(391, 0);
+            this.label5.Location = new System.Drawing.Point(390, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(307, 117);
@@ -488,11 +488,12 @@ namespace Computer_Prototype
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(4, 99);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1043, 244);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
@@ -502,9 +503,9 @@ namespace Computer_Prototype
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
+            this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.mainMenuPanel);
             this.Controls.Add(this.moveListPanel);
-            this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.gamePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
