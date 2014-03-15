@@ -1,53 +1,12 @@
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Release\Computer_Prototype.exe.config
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Interop.WMPLib.dll
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Release\Computer_Prototype.exe
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Release\Computer_Prototype.pdb
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Release\Interop.WMPLib.dll
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\bin\Release\AxInterop.WMPLib.dll
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.exe
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.pdb
-c:\users\adnan2\documents\visual studio 2012\Projects\Computer_Prototype\Computer_Prototype\obj\Release\Computer_Prototype.csprojResolveAssemblyReference.cache
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe.config
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Interop.WMPLib.dll
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.exe
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.pdb
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.pdb
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Interop.WMPLib.dll
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\bin\Release\AxInterop.WMPLib.dll
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csprojResolveAssemblyReference.cache
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
-C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe.config
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Interop.WMPLib.dll
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.exe
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.pdb
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Computer_Prototype.pdb
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\bin\Release\Interop.WMPLib.dll
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\bin\Release\AxInterop.WMPLib.dll
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csprojResolveAssemblyReference.cache
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
-C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
 C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe.config
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Interop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
 C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.exe
 C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Computer_Prototype.pdb
 C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\Interop.WMPLib.dll
 C:\Users\Adnan2\taichi\Computer_Prototype\bin\Release\AxInterop.WMPLib.dll
-C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Interop.WMPLib.dll
-C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\AxInterop.WMPLib.dll
-C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.ResolveComReference.cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csprojResolveAssemblyReference.cache
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
