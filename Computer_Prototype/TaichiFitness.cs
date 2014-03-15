@@ -236,5 +236,10 @@ namespace Computer_Prototype
 
         }
 
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }
