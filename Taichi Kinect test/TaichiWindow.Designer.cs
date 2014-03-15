@@ -34,9 +34,11 @@ namespace TaichiKinect
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label_connection_status = new System.Windows.Forms.Label();
             this.button_up = new System.Windows.Forms.Button();
             this.button_down = new System.Windows.Forms.Button();
+            this.timer_info_update = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label_connection_status
@@ -69,6 +71,12 @@ namespace TaichiKinect
             this.button_down.UseVisualStyleBackColor = true;
             this.button_down.Click += new System.EventHandler(this.button_down_Click);
             // 
+            // timer_info_update
+            // 
+            this.timer_info_update.Enabled = true;
+            this.timer_info_update.Interval = 50;
+            this.timer_info_update.Tick += new System.EventHandler(this.timerElapsedEvent);
+            // 
             // TaichiWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +98,7 @@ namespace TaichiKinect
         public Label label_connection_status;
         private Button button_up;
         private Button button_down;
+        private Timer timer_info_update;
 
     }
 }

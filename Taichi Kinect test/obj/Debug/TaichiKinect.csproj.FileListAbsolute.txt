@@ -7,3 +7,12 @@ c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\
 c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.csproj.GenerateResource.Cache
 c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.exe
 c:\users\adnan2\documents\visual studio 2012\Projects\TaichiKinect\TaichiKinect\obj\Debug\TaichiKinect.pdb
+C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Debug\TaichiKinect.exe.config
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.exe
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.pdb
+C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Debug\TaichiKinect.exe
+C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Debug\TaichiKinect.pdb
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.csprojResolveAssemblyReference.cache
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.Properties.Resources.resources
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.TaichiWindow.resources
+C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Debug\TaichiKinect.csproj.GenerateResource.Cache

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Kinect;
+using System.Windows.Media.Imaging.WriteableBitmap;
+
 
 namespace TaichiKinect
 {
@@ -15,6 +17,9 @@ namespace TaichiKinect
     {
         public KinectSensor kinect;
         public Skeleton[] skeletonData;
+        private byte[] colorPixels;
+        private WriteableBitmap colorBitmap;
+
         
         public TaichiWindow()
         {
@@ -37,15 +42,22 @@ namespace TaichiKinect
                 this.kinect.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
                 this.kinect.SkeletonStream.Enable();
                 this.kinect.ColorStream.Enable(ColorImageFormat.InfraredResolution640x480Fps30);
+
+
                 //set up skeleton object            
                 skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength]; // Allocate ST data
-                kinect.SkeletonFrameReady += this.kinect_SkeletonFrameReady; // new EventHandler<SkeletonFrameReadyEventArgs>(kinect_SkeletonFrameReady); // Get Ready for Skeleton Ready Events
+                this.kinect.SkeletonFrameReady += this.kinectSkeletonFrameReady; // new EventHandler<SkeletonFrameReadyEventArgs>(this.kinectSkeletonFrameReady); // Get Ready for Skeleton Ready Events
+
+                // set up color stream
+                this.colorPixels = new byte[this.kinect.ColorStream.FramePixelDataLength];
+                this.kinect.ColorFrameReady += this.kinectSensorColorFrameReady;//this.kinectSensorColorFrameReady;
+               
                 // start the kinect              
                this.kinect.Start();           
             }
         }
 
-        private void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
+        private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
@@ -57,6 +69,18 @@ namespace TaichiKinect
             this.label_connection_status.Text = "Skeleton Ready!";
 
         }
+
+          private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+          {
+            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+            {
+              if (colorFrame != null)
+              {
+                colorFrame.CopyPixelDataTo(this.colorPixels);
+                
+              }
+            }  
+          }
         private void label_connection_status_Click(object sender, EventArgs e)
         {
     
@@ -80,8 +104,21 @@ namespace TaichiKinect
 
         private void TaichiWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MessageBox.Show("Stopping Kinect","Exiting");
+            MessageBox.Show("Stopping Kinect","Message Box");
             kinect.Stop();
+        }
+
+        private void timerElapsedEvent(object sender, EventArgs e)
+        {
+
+            foreach (Skeleton skel in skeletonData)
+            {
+                if (skel != null)
+                {
+                    this.label_connection_status.Text = skel.TrackingId.ToString();
+                }
+                
+            }
         }
     }
 }
