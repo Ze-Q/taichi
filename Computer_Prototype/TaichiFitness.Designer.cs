@@ -52,6 +52,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelGameMode = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.videoTutorial = new AxWMPLib.AxWindowsMediaPlayer();
             this.highscorePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -60,7 +61,6 @@ namespace Computer_Prototype
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.mainMenuTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainMenuPanel.SuspendLayout();
@@ -278,7 +278,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -311,7 +311,7 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(389, 0);
+            this.label5.Location = new System.Drawing.Point(388, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(305, 117);
@@ -390,6 +390,19 @@ namespace Computer_Prototype
             this.labelGameMode.Text = "Follow the avatar on the right";
             this.labelGameMode.Click += new System.EventHandler(this.labelGameMode_Click);
             // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(3, 67);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button3.Size = new System.Drawing.Size(479, 78);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Abort Game ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // videoTutorial
             // 
             this.videoTutorial.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -418,6 +431,8 @@ namespace Computer_Prototype
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel6.BackgroundImage")));
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 618F));
@@ -480,6 +495,7 @@ namespace Computer_Prototype
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.label2.Location = new System.Drawing.Point(501, 85);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -493,6 +509,7 @@ namespace Computer_Prototype
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.label1.Location = new System.Drawing.Point(93, 417);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -501,19 +518,6 @@ namespace Computer_Prototype
             this.label1.Text = "Good Job!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(3, 67);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button3.Size = new System.Drawing.Size(479, 78);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Abort Game ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
             // TaichiFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -521,9 +525,9 @@ namespace Computer_Prototype
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
             this.Controls.Add(this.mainMenuPanel);
-            this.Controls.Add(this.gamePanel);
             this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.moveListPanel);
+            this.Controls.Add(this.gamePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

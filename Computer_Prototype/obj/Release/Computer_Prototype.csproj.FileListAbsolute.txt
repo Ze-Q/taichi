@@ -27,3 +27,4 @@ C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Comp
 C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.TaichiFitness.resources
 C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.Properties.Resources.resources
 C:\Users\Christopher\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.csproj.GenerateResource.Cache
+C:\Users\Ze\Documents\GitHub\taichi\Computer_Prototype\obj\Release\Computer_Prototype.stats.resources
