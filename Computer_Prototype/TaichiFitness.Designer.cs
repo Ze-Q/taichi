@@ -60,6 +60,7 @@ namespace Computer_Prototype
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.mainMenuTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainMenuPanel.SuspendLayout();
@@ -277,7 +278,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 343F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -313,7 +314,7 @@ namespace Computer_Prototype
             this.label5.Location = new System.Drawing.Point(389, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(306, 117);
+            this.label5.Size = new System.Drawing.Size(305, 117);
             this.label5.TabIndex = 0;
             this.label5.Text = "List of Forms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -364,13 +365,15 @@ namespace Computer_Prototype
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.labelGameMode, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 5);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 558F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 494F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(485, 642);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -379,12 +382,13 @@ namespace Computer_Prototype
             this.labelGameMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelGameMode.AutoSize = true;
             this.labelGameMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGameMode.Location = new System.Drawing.Point(134, 22);
+            this.labelGameMode.Location = new System.Drawing.Point(12, 12);
             this.labelGameMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelGameMode.Name = "labelGameMode";
-            this.labelGameMode.Size = new System.Drawing.Size(217, 39);
+            this.labelGameMode.Size = new System.Drawing.Size(461, 39);
             this.labelGameMode.TabIndex = 0;
-            this.labelGameMode.Text = "Game_Mode";
+            this.labelGameMode.Text = "Follow the avatar on the right";
+            this.labelGameMode.Click += new System.EventHandler(this.labelGameMode_Click);
             // 
             // videoTutorial
             // 
@@ -497,6 +501,19 @@ namespace Computer_Prototype
             this.label1.Text = "Good Job!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(3, 67);
+            this.button3.Name = "button3";
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.button3.Size = new System.Drawing.Size(479, 78);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Abort Game ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // TaichiFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -504,9 +521,9 @@ namespace Computer_Prototype
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
             this.Controls.Add(this.mainMenuPanel);
+            this.Controls.Add(this.gamePanel);
             this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.moveListPanel);
-            this.Controls.Add(this.gamePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -569,6 +586,7 @@ namespace Computer_Prototype
         private AxWMPLib.AxWindowsMediaPlayer videoTutorial;
         private System.Windows.Forms.PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button button3;
     }
 }
 

@@ -40,7 +40,7 @@ namespace Computer_Prototype
             DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                Application.Exit();
+                Application.ExitThread();
             }
 
         }
@@ -242,6 +242,19 @@ namespace Computer_Prototype
             {
                 e.Cancel = true;
             }
+        }
+
+        private void labelGameMode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.moveListPanel.Hide();
+            this.mainMenuPanel.Show();
+            this.highscorePanel.Hide();
+            this.gamePanel.Hide();
         }
 
     }
