@@ -39,21 +39,22 @@ namespace TaichiKinect
             this.button_up = new System.Windows.Forms.Button();
             this.button_down = new System.Windows.Forms.Button();
             this.timer_info_update = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox_videostream = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_videostream)).BeginInit();
             this.SuspendLayout();
             // 
             // label_connection_status
             // 
             this.label_connection_status.AutoSize = true;
-            this.label_connection_status.Location = new System.Drawing.Point(119, 82);
+            this.label_connection_status.Location = new System.Drawing.Point(12, 77);
             this.label_connection_status.Name = "label_connection_status";
             this.label_connection_status.Size = new System.Drawing.Size(17, 13);
             this.label_connection_status.TabIndex = 0;
             this.label_connection_status.Text = "lol";
-            this.label_connection_status.Click += new System.EventHandler(this.label_connection_status_Click);
             // 
             // button_up
             // 
-            this.button_up.Location = new System.Drawing.Point(188, 31);
+            this.button_up.Location = new System.Drawing.Point(576, 25);
             this.button_up.Name = "button_up";
             this.button_up.Size = new System.Drawing.Size(75, 23);
             this.button_up.TabIndex = 1;
@@ -63,7 +64,7 @@ namespace TaichiKinect
             // 
             // button_down
             // 
-            this.button_down.Location = new System.Drawing.Point(188, 77);
+            this.button_down.Location = new System.Drawing.Point(576, 71);
             this.button_down.Name = "button_down";
             this.button_down.Size = new System.Drawing.Size(75, 23);
             this.button_down.TabIndex = 2;
@@ -77,17 +78,27 @@ namespace TaichiKinect
             this.timer_info_update.Interval = 50;
             this.timer_info_update.Tick += new System.EventHandler(this.timerElapsedEvent);
             // 
+            // pictureBox_videostream
+            // 
+            this.pictureBox_videostream.Location = new System.Drawing.Point(174, 98);
+            this.pictureBox_videostream.Name = "pictureBox_videostream";
+            this.pictureBox_videostream.Size = new System.Drawing.Size(287, 245);
+            this.pictureBox_videostream.TabIndex = 3;
+            this.pictureBox_videostream.TabStop = false;
+            // 
             // TaichiWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(675, 401);
+            this.Controls.Add(this.pictureBox_videostream);
             this.Controls.Add(this.button_down);
             this.Controls.Add(this.button_up);
             this.Controls.Add(this.label_connection_status);
             this.Name = "TaichiWindow";
             this.Text = "Taichi Window";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TaichiWindow_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_videostream)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +110,7 @@ namespace TaichiKinect
         private Button button_up;
         private Button button_down;
         private Timer timer_info_update;
+        private PictureBox pictureBox_videostream;
 
     }
 }
