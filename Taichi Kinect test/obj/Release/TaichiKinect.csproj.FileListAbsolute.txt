@@ -1,9 +1,0 @@
-C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Release\TaichiKinect.exe.config
-C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Release\TaichiKinect.exe
-C:\Users\Adnan2\taichi\Taichi Kinect test\bin\Release\TaichiKinect.pdb
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.csprojResolveAssemblyReference.cache
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.Properties.Resources.resources
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.TaichiWindow.resources
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.csproj.GenerateResource.Cache
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.exe
-C:\Users\Adnan2\taichi\Taichi Kinect test\obj\Release\TaichiKinect.pdb

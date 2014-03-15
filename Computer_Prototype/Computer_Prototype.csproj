@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileIO.cs" />
+    <Compile Include="stats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stats.Designer.cs">
+      <DependentUpon>stats.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaichiFitness.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="stats.resx">
+      <DependentUpon>stats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaichiFitness.resx">
       <DependentUpon>TaichiFitness.cs</DependentUpon>
     </EmbeddedResource>
