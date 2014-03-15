@@ -22,25 +22,7 @@ namespace Computer_Prototype
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string misc = "./misc";
-            if (!System.IO.Directory.Exists(misc))
-            {
-                System.IO.Directory.CreateDirectory(misc);
-            }
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer("./misc/nature_sounds.wav");
-            player.PlayLooping();
-            //player.Play();
-            //Cursor myCursor = new Cursor("myCursor.cur");
-            //myControl.Cursor = myCursor;
-            //this.Cursor = Cursor.
 
-            /*
-             * TODO play intro audio
-             */
-            this.moveListPanel.Hide();
-            this.mainMenuPanel.Show();
-            this.highscorePanel.Hide();
-            this.gamePanel.Hide();          
         }
         private void play_Click(object sender, EventArgs e)
         {
@@ -54,7 +36,13 @@ namespace Computer_Prototype
         {
             // Play GoodBye
             //this.mainMenuTableLayout.Hide();
-            Application.Exit();
+
+            DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
         }
 
         private void highscorePanel_Paint(object sender, PaintEventArgs e)
@@ -239,6 +227,21 @@ namespace Computer_Prototype
         private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void TaichiFitness_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Application.ExitThread();﻿
+            }
+
+            else if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
     }
