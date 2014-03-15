@@ -80,10 +80,10 @@ namespace Computer_Prototype
             // 
             this.tutorialButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tutorialButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tutorialButton.Location = new System.Drawing.Point(121, 390);
+            this.tutorialButton.Location = new System.Drawing.Point(121, 386);
             this.tutorialButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tutorialButton.Name = "tutorialButton";
-            this.tutorialButton.Size = new System.Drawing.Size(849, 73);
+            this.tutorialButton.Size = new System.Drawing.Size(849, 80);
             this.tutorialButton.TabIndex = 0;
             this.tutorialButton.Text = "Learn How to Play";
             this.tutorialButton.UseVisualStyleBackColor = true;
@@ -119,19 +119,25 @@ namespace Computer_Prototype
             // 
             this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.Gainsboro;
             this.titleLabel.Location = new System.Drawing.Point(317, 0);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(458, 73);
             this.titleLabel.TabIndex = 3;
             this.titleLabel.Text = "Tai Chi Fitness";
+            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
             // 
             // mainMenuTableLayout
             // 
-            this.mainMenuTableLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mainMenuTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainMenuTableLayout.AutoSize = true;
-            this.mainMenuTableLayout.BackColor = System.Drawing.Color.White;
+            this.mainMenuTableLayout.BackColor = System.Drawing.Color.Transparent;
+            this.mainMenuTableLayout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuTableLayout.BackgroundImage")));
             this.mainMenuTableLayout.ColumnCount = 1;
             this.mainMenuTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainMenuTableLayout.Controls.Add(this.titleLabel, 0, 0);
@@ -155,6 +161,7 @@ namespace Computer_Prototype
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 78);
@@ -188,6 +195,7 @@ namespace Computer_Prototype
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel3.BackgroundImage")));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
@@ -208,6 +216,7 @@ namespace Computer_Prototype
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.buttonForm1, 0, 0);
@@ -264,10 +273,11 @@ namespace Computer_Prototype
             // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 336F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -296,12 +306,14 @@ namespace Computer_Prototype
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(393, 0);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(391, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(309, 117);
+            this.label5.Size = new System.Drawing.Size(307, 117);
             this.label5.TabIndex = 0;
             this.label5.Text = "List of Forms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -490,8 +502,8 @@ namespace Computer_Prototype
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
-            this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.mainMenuPanel);
+            this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.gamePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;

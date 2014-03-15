@@ -231,5 +231,10 @@ namespace Computer_Prototype
 
         }
 
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
