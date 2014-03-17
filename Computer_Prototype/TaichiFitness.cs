@@ -17,6 +17,7 @@ namespace Computer_Prototype
         public TaichiFitness()
         {
             InitializeComponent();
+            FileIO fileIO = new FileIO();
              //myCursor = new Cursor("myCursor.cur");
         }
 
