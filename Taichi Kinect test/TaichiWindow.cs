@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Runtime.InteropServices;
 
 
+
 namespace TaichiKinect
 {
     public partial class TaichiWindow : Form
@@ -25,7 +26,6 @@ namespace TaichiKinect
         Bitmap kinectVideo;
         IntPtr colorPtr;
         int test = 0;
-
         
         public TaichiWindow()
         {
@@ -51,7 +51,7 @@ namespace TaichiKinect
 
                 //set up skeleton object            
                 skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength]; // Allocate ST data
-                this.kinect.SkeletonFrameReady += this.kinectSkeletonFrameReady; // new EventHandler<SkeletonFrameReadyEventArgs>(this.kinectSkeletonFrameReady); // Get Ready for Skeleton Ready Events
+                this.kinect.SkeletonFrameReady += this.kinectSkeletonFrameReady; 
 
                 // set up color stream
                 this.colorPixels = new byte[this.kinect.ColorStream.FramePixelDataLength];
@@ -69,8 +69,12 @@ namespace TaichiKinect
             {
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
                 {
-                    skeletonFrame.CopySkeletonDataTo(this.skeletonData); // get the skeletal information in this frame
-                    this.label_connection_status.Text = "Skeleton Ready!";
+                    skeletonFrame.CopySkeletonDataTo(this.skeletonData); // get the skeletal information in this frame                   
+                    foreach (Skeleton s in skeletonData)
+                    {
+                        this.label_connection_status.Text = "x:" + s.Position.X.ToString() + "," + "y:" + s.Position.Y.ToString() + "," + "z:" + s.Position.Z.ToString();
+                        //this.label_connection_status.Text = "x:" + s.Joints[JointType.Head].Position.X.ToString() + "," + "y:" + s.Position.Y.ToString() + "," + "z:" + s.Position.Z.ToString();
+                    }
                 }           
             }
 
@@ -100,8 +104,7 @@ namespace TaichiKinect
 
                 this.pictureBox_videostream.Image = kinectVideo;
               }
-            }
-            //this.label_connection_status.Text = test.ToString();
+            }           
             test++;
           }
 
