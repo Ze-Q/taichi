@@ -12,18 +12,38 @@ namespace Computer_Prototype
 {
     public partial class TaichiFitness : Form
     {
+        private static PictureBox kinectVideo;
+        //Singleton VideoFeed for Kinect
+        public static PictureBox KinectVideoInstance
+        {
+            get
+            {
+               return kinectVideo;
+            }
+        }
+       
        // Cursor myCursor;
-
+        Kinect kinect;
         public TaichiFitness()
         {
             InitializeComponent();
             FileIO fileIO = new FileIO();
-             //myCursor = new Cursor("myCursor.cur");
+            kinect = new Kinect();
+            kinectVideo = this.pictureBoxKinectVideoStream;
+          
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.mainMenuPanel.Show();
+            this.moveListPanel.Hide();
+            this.highscorePanel.Hide();
+            this.gamePanel.Hide();
+        }
 
+        public void updateKinectVideoStream(Bitmap Videoframe)
+        {
+            this.pictureBoxKinectVideoStream.Image = this.kinect.kinectVideoBitmap;
         }
         private void play_Click(object sender, EventArgs e)
         {
@@ -41,6 +61,7 @@ namespace Computer_Prototype
             DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
+                kinect.closeKinect();
                 Application.ExitThread();
             }
 
@@ -63,32 +84,32 @@ namespace Computer_Prototype
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (labelGameMode.Text == "Form 1")
+            if (labelGameMode.Text == this.buttonForm1.Text)
             {
                 this.moveListPanel.Hide();
                 this.mainMenuPanel.Hide();
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
-                this.labelGameMode.Text = "Form 2";
-                this.videoTutorial.URL = "./misc/basic_move.wmv";
+                this.labelGameMode.Text = this.buttonForm2.Text;
+                this.videoTutorial.URL = "./misc/preparation.wmv";
             }
-            else if (labelGameMode.Text == "Form 2")
+            else if (labelGameMode.Text == this.buttonForm2.Text)
             {
                 this.moveListPanel.Hide();
                 this.mainMenuPanel.Hide();
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
-                this.labelGameMode.Text = "Form 3";
-                this.videoTutorial.URL = "./misc/basic_move.wmv";
+                this.labelGameMode.Text = this.buttonForm3.Text;
+                this.videoTutorial.URL = "./misc/preparation.wmv";
             }
-            else if (labelGameMode.Text == "Form 3")
+            else if (labelGameMode.Text == this.buttonForm3.Text)
             {
                 this.moveListPanel.Hide();
                 this.mainMenuPanel.Hide();
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
-                this.labelGameMode.Text = "Form 1";
-                this.videoTutorial.URL = "./misc/basic_move.wmv";
+                this.labelGameMode.Text = this.buttonForm1.Text;
+                this.videoTutorial.URL = "./misc/preparation.wmv";
             }
         }
 
@@ -118,8 +139,8 @@ namespace Computer_Prototype
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
             this.gamePanel.Show();
-            this.labelGameMode.Text = "Form 1";
-            this.videoTutorial.URL = "./misc/basic_move.wmv";
+            this.labelGameMode.Text = this.buttonForm1.Text;
+            this.videoTutorial.URL = "./misc/preparation.wmv";
         }
         private void startForm2_Click(object sender, EventArgs e)
         {
@@ -127,8 +148,8 @@ namespace Computer_Prototype
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
             this.gamePanel.Show();
-            this.labelGameMode.Text = "Form 2";
-            this.videoTutorial.URL = "./misc/basic_move.wmv";
+            this.labelGameMode.Text = this.buttonForm2.Text;
+            this.videoTutorial.URL = "./misc/preparation.wmv";
         }
         private void startForm3_Click(object sender, EventArgs e)
         {
@@ -136,8 +157,8 @@ namespace Computer_Prototype
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
             this.gamePanel.Show();
-            this.labelGameMode.Text = "Form 3";
-            this.videoTutorial.URL = "./misc/basic_move.wmv";
+            this.labelGameMode.Text = this.buttonForm3.Text;
+            this.videoTutorial.URL = "./misc/preparation.wmv";
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -187,6 +208,7 @@ namespace Computer_Prototype
                 this.highscorePanel.Show();
                 this.gamePanel.Hide();
             }
+
         }
 
         private void videoTutorial_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
@@ -256,6 +278,11 @@ namespace Computer_Prototype
             this.mainMenuPanel.Show();
             this.highscorePanel.Hide();
             this.gamePanel.Hide();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

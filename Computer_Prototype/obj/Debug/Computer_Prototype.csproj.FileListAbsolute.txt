@@ -26,3 +26,4 @@ C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.csprojRes
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.TaichiFitness.resources
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.Properties.Resources.resources
 C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.csproj.GenerateResource.Cache
+C:\Users\Adnan2\taichi\Computer_Prototype\obj\Debug\Computer_Prototype.stats.resources

@@ -52,8 +52,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelGameMode = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.videoTutorial = new AxWMPLib.AxWindowsMediaPlayer();
+            this.buttonAbort = new System.Windows.Forms.Button();
             this.highscorePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -61,6 +60,9 @@ namespace Computer_Prototype
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxKinectVideoStream = new System.Windows.Forms.PictureBox();
+            this.videoTutorial = new AxWMPLib.AxWindowsMediaPlayer();
+            this.progressBarStats = new System.Windows.Forms.ProgressBar();
             this.mainMenuTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainMenuPanel.SuspendLayout();
@@ -71,10 +73,11 @@ namespace Computer_Prototype
             this.gamePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.videoTutorial)).BeginInit();
             this.highscorePanel.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKinectVideoStream)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoTutorial)).BeginInit();
             this.SuspendLayout();
             // 
             // tutorialButton
@@ -278,7 +281,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 346F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 349F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -311,10 +314,10 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(388, 0);
+            this.label5.Location = new System.Drawing.Point(386, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(304, 117);
+            this.label5.Size = new System.Drawing.Size(303, 117);
             this.label5.TabIndex = 0;
             this.label5.Text = "List of Forms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -365,7 +368,8 @@ namespace Computer_Prototype
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.labelGameMode, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.buttonAbort, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxKinectVideoStream, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 5);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -390,32 +394,18 @@ namespace Computer_Prototype
             this.labelGameMode.Text = "Follow the avatar on the right";
             this.labelGameMode.Click += new System.EventHandler(this.labelGameMode_Click);
             // 
-            // button3
+            // buttonAbort
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(3, 67);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button3.Size = new System.Drawing.Size(479, 78);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Abort Game ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // videoTutorial
-            // 
-            this.videoTutorial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoTutorial.Enabled = true;
-            this.videoTutorial.Location = new System.Drawing.Point(497, 5);
-            this.videoTutorial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.videoTutorial.Name = "videoTutorial";
-            this.videoTutorial.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoTutorial.OcxState")));
-            this.videoTutorial.Size = new System.Drawing.Size(550, 642);
-            this.videoTutorial.TabIndex = 2;
-            this.videoTutorial.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.videoTutorial_PlayStateChange);
-            this.videoTutorial.EndOfStream += new AxWMPLib._WMPOCXEvents_EndOfStreamEventHandler(this.videoTutorial_EndOfStream);
-            this.videoTutorial.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
+            this.buttonAbort.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAbort.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAbort.Location = new System.Drawing.Point(3, 67);
+            this.buttonAbort.Name = "buttonAbort";
+            this.buttonAbort.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.buttonAbort.Size = new System.Drawing.Size(479, 78);
+            this.buttonAbort.TabIndex = 1;
+            this.buttonAbort.Text = "Abort Game ";
+            this.buttonAbort.UseVisualStyleBackColor = true;
+            this.buttonAbort.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // highscorePanel
             // 
@@ -439,17 +429,19 @@ namespace Computer_Prototype
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 618F));
             this.tableLayoutPanel6.Controls.Add(this.pictureBox2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.button2, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.button2, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.button1, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.progressBarStats, 1, 1);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, -3);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowCount = 4;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.95918F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 116F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 152F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1080, 660);
             this.tableLayoutPanel6.TabIndex = 4;
             this.tableLayoutPanel6.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel6_Paint);
@@ -458,7 +450,7 @@ namespace Computer_Prototype
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(4, 21);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 11);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(425, 349);
@@ -470,10 +462,10 @@ namespace Computer_Prototype
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(525, 408);
+            this.button1.Location = new System.Drawing.Point(525, 460);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(492, 83);
+            this.button1.Size = new System.Drawing.Size(492, 77);
             this.button1.TabIndex = 2;
             this.button1.Text = "Continue with next form";
             this.button1.UseVisualStyleBackColor = true;
@@ -483,10 +475,10 @@ namespace Computer_Prototype
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(523, 531);
+            this.button2.Location = new System.Drawing.Point(523, 564);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(495, 105);
+            this.button2.Size = new System.Drawing.Size(495, 74);
             this.button2.TabIndex = 3;
             this.button2.Text = "Back To Main Menu";
             this.button2.UseVisualStyleBackColor = true;
@@ -498,7 +490,7 @@ namespace Computer_Prototype
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(530, 88);
+            this.label2.Location = new System.Drawing.Point(530, 78);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(482, 216);
@@ -512,7 +504,7 @@ namespace Computer_Prototype
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(66, 413);
+            this.label1.Location = new System.Drawing.Point(66, 377);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(329, 73);
@@ -520,16 +512,49 @@ namespace Computer_Prototype
             this.label1.Text = "Good Job!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // pictureBoxKinectVideoStream
+            // 
+            this.pictureBoxKinectVideoStream.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxKinectVideoStream.Location = new System.Drawing.Point(3, 173);
+            this.pictureBoxKinectVideoStream.Name = "pictureBoxKinectVideoStream";
+            this.pictureBoxKinectVideoStream.Size = new System.Drawing.Size(479, 444);
+            this.pictureBoxKinectVideoStream.TabIndex = 2;
+            this.pictureBoxKinectVideoStream.TabStop = false;
+            // 
+            // videoTutorial
+            // 
+            this.videoTutorial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoTutorial.Enabled = true;
+            this.videoTutorial.Location = new System.Drawing.Point(497, 5);
+            this.videoTutorial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.videoTutorial.Name = "videoTutorial";
+            this.videoTutorial.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoTutorial.OcxState")));
+            this.videoTutorial.Size = new System.Drawing.Size(550, 642);
+            this.videoTutorial.TabIndex = 2;
+            this.videoTutorial.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.videoTutorial_PlayStateChange);
+            this.videoTutorial.EndOfStream += new AxWMPLib._WMPOCXEvents_EndOfStreamEventHandler(this.videoTutorial_EndOfStream);
+            this.videoTutorial.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
+            // 
+            // progressBarStats
+            // 
+            this.progressBarStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBarStats.Location = new System.Drawing.Point(465, 375);
+            this.progressBarStats.Name = "progressBarStats";
+            this.progressBarStats.Size = new System.Drawing.Size(612, 77);
+            this.progressBarStats.TabIndex = 5;
+            this.progressBarStats.Value = 89;
+            this.progressBarStats.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
             // TaichiFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
-            this.Controls.Add(this.mainMenuPanel);
             this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.gamePanel);
+            this.Controls.Add(this.mainMenuPanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -537,6 +562,7 @@ namespace Computer_Prototype
             this.Text = "Taichi Fitness";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaichiFitness_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.mainMenuTableLayout.ResumeLayout(false);
             this.mainMenuTableLayout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -552,11 +578,12 @@ namespace Computer_Prototype
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.videoTutorial)).EndInit();
             this.highscorePanel.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKinectVideoStream)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoTutorial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -592,7 +619,9 @@ namespace Computer_Prototype
         private AxWMPLib.AxWindowsMediaPlayer videoTutorial;
         private System.Windows.Forms.PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Button button3;
+        private Button buttonAbort;
+        private PictureBox pictureBoxKinectVideoStream;
+        private ProgressBar progressBarStats;
     }
 }
 
