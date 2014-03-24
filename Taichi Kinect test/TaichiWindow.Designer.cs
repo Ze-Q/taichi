@@ -80,9 +80,9 @@ namespace TaichiKinect
             // 
             // pictureBox_videostream
             // 
-            this.pictureBox_videostream.Location = new System.Drawing.Point(174, 98);
+            this.pictureBox_videostream.Location = new System.Drawing.Point(90, 25);
             this.pictureBox_videostream.Name = "pictureBox_videostream";
-            this.pictureBox_videostream.Size = new System.Drawing.Size(287, 245);
+            this.pictureBox_videostream.Size = new System.Drawing.Size(461, 388);
             this.pictureBox_videostream.TabIndex = 3;
             this.pictureBox_videostream.TabStop = false;
             // 

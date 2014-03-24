@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Kinect;
-using System.Windows;
+
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Runtime.InteropServices;
@@ -65,48 +65,70 @@ namespace TaichiKinect
 
         private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
+ 
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
                 {
-                    skeletonFrame.CopySkeletonDataTo(this.skeletonData); // get the skeletal information in this frame                   
+                    skeletonData = new Skeleton[skeletonFrame.SkeletonArrayLength];
+                    skeletonFrame.CopySkeletonDataTo(skeletonData); // get the skeletal information in this frame                   
                     foreach (Skeleton s in skeletonData)
                     {
-                        this.label_connection_status.Text = "x:" + s.Position.X.ToString() + "," + "y:" + s.Position.Y.ToString() + "," + "z:" + s.Position.Z.ToString();
+                        if (s.TrackingState == SkeletonTrackingState.Tracked)
+                        {
+                            // head
+                            Point headPoint = getPoint(s,JointType.Head);
+                            //shoulder center
+                            Point neckPoint = getPoint(s,JointType.ShoulderCenter);
+
+                            //Graphics g = Graphics.FromImage(kinectVideo);
+                            //g.DrawLine(Pens.Red, headPoint, neckPoint);
+                            this.label_connection_status.Text = "x: " + headPoint.X + ", y: " + headPoint.Y;
+                        }
+                        //this.label_connection_status.Text = "x: " + getPoint(s.Joints[JointType.Head].Position).X + "y: " + getPoint(s.Joints[JointType.Head].Position).Y;
                         //this.label_connection_status.Text = "x:" + s.Joints[JointType.Head].Position.X.ToString() + "," + "y:" + s.Position.Y.ToString() + "," + "z:" + s.Position.Z.ToString();
                     }
-                }           
+                }
             }
 
+            // Draw Skeleton
 
         }
 
-          private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
-          {
-            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
-            {
-              if (colorFrame != null)
-              {           
-                if (colorPixels == null) colorPixels = new byte[colorFrame.PixelDataLength];
-                colorFrame.CopyPixelDataTo(this.colorPixels);
-                colorFrame.CopyPixelDataTo(colorPixels);
+        private Point getPoint(Skeleton s,JointType j)
+        {
+            SkeletonPoint skelpoint = s.Joints[j].Position;
+            // different from guide
+            ColorImagePoint colorpoint = kinect.CoordinateMapper.MapSkeletonPointToColorPoint(skelpoint, ColorImageFormat.RgbResolution640x480Fps30);
+            return new System.Drawing.Point(colorpoint.X,colorpoint.Y);
+        }
 
-                Marshal.FreeHGlobal(colorPtr);
-                colorPtr = Marshal.AllocHGlobal(colorPixels.Length);
-                Marshal.Copy(colorPixels, 0, colorPtr, colorPixels.Length);
+        private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+        {
+        using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+        {
+            if (colorFrame != null)
+            {           
+            if (colorPixels == null) colorPixels = new byte[colorFrame.PixelDataLength];
+            colorFrame.CopyPixelDataTo(this.colorPixels);
+            colorFrame.CopyPixelDataTo(colorPixels);
 
-                kinectVideo = new Bitmap(
-                    colorFrame.Width,
-                    colorFrame.Height,
-                    colorFrame.Width * colorFrame.BytesPerPixel,
-                    System.Drawing.Imaging.PixelFormat.Format32bppRgb,
-                    colorPtr);
+            Marshal.FreeHGlobal(colorPtr);
+            colorPtr = Marshal.AllocHGlobal(colorPixels.Length);
+            Marshal.Copy(colorPixels, 0, colorPtr, colorPixels.Length);
 
-                this.pictureBox_videostream.Image = kinectVideo;
-              }
-            }           
-            test++;
-          }
+            kinectVideo = new Bitmap(
+                colorFrame.Width,
+                colorFrame.Height,
+                colorFrame.Width * colorFrame.BytesPerPixel,
+                System.Drawing.Imaging.PixelFormat.Format32bppRgb,
+                colorPtr);
+
+            this.pictureBox_videostream.Image = kinectVideo;
+            }
+        }           
+        test++;
+        }
 
         private void button_up_Click(object sender, EventArgs e)
         {
