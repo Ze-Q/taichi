@@ -88,10 +88,31 @@ namespace TaichiKinect
                             g = Graphics.FromImage(kinectSkel);
 
                             DrawBone(JointType.Head,JointType.ShoulderCenter,s,g);
+                            // shoulders 
                             DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, g);
                             DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, g);
-                            DrawBone(JointType.WristRight, JointType.ShoulderRight, s, g);
-                            DrawBone(JointType.WristLeft, JointType.ShoulderLeft, s, g);
+                            // bicep/tricep
+                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, g);
+                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, g);
+                            // forearm
+                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, g);  
+                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, g);
+
+
+                            // torso
+                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, g);
+
+                            // hips
+                            //DrawBone(JointType.HipRight, JointType.Spine, s, g);
+                            //DrawBone(JointType.HipLeft, JointType.Spine, s, g);
+
+                            //// quads
+                            //DrawBone(JointType.HipRight, JointType.KneeRight, s, g);
+                            //DrawBone(JointType.HipLeft, JointType.KneeLeft, s, g);
+
+                            //// shin
+                            //DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, g);
+                            //DrawBone(JointType.AnkleRight, JointType.KneeRight, s, g);
 
                             int x = headPoint.X;
                             int y= headPoint.Y;
@@ -192,8 +213,8 @@ namespace TaichiKinect
                 // overlay
                 if (kinectVideo != null && kinectSkel != null)
                 {
-                    g.DrawImage(kinectVideo, new Rectangle(-10, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
-                    g.DrawImage(kinectSkel, new Rectangle(-60, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
+                    g.DrawImage(kinectVideo, new Rectangle(0, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
+                    g.DrawImage(kinectSkel, new Rectangle(0, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
                 }
                 
 

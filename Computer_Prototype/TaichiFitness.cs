@@ -28,7 +28,7 @@ namespace Computer_Prototype
         {
             InitializeComponent();
             FileIO fileIO = new FileIO();
-            kinect = new Kinect();
+            kinect = new Kinect(new Point(this.pictureBoxKinectVideoStream.Width, this.pictureBoxKinectVideoStream.Height));
             kinectVideo = this.pictureBoxKinectVideoStream;
           
         }
@@ -43,7 +43,7 @@ namespace Computer_Prototype
 
         public void updateKinectVideoStream(Bitmap Videoframe)
         {
-            this.pictureBoxKinectVideoStream.Image = this.kinect.kinectVideoBitmap;
+            ///this.pictureBoxKinectVideoStream.Image = this.kinect.kinectVideoBitmap;
         }
         private void play_Click(object sender, EventArgs e)
         {
@@ -283,6 +283,11 @@ namespace Computer_Prototype
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void kinectVideoTimer_Tick(object sender, EventArgs e)
+        {
+            this.pictureBoxKinectVideoStream.Image = kinect.updateKinect();            
         }
 
     }

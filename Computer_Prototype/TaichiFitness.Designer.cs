@@ -30,6 +30,7 @@ namespace Computer_Prototype
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaichiFitness));
             this.tutorialButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@ namespace Computer_Prototype
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBarStats = new System.Windows.Forms.ProgressBar();
+            this.kinectVideoTimer = new System.Windows.Forms.Timer(this.components);
             this.mainMenuTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainMenuPanel.SuspendLayout();
@@ -281,7 +283,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -314,10 +316,10 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(385, 0);
+            this.label5.Location = new System.Drawing.Point(384, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(303, 117);
+            this.label5.Size = new System.Drawing.Size(302, 117);
             this.label5.TabIndex = 0;
             this.label5.Text = "List of Forms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -545,6 +547,12 @@ namespace Computer_Prototype
             this.progressBarStats.Value = 89;
             this.progressBarStats.Click += new System.EventHandler(this.progressBar1_Click);
             // 
+            // kinectVideoTimer
+            // 
+            this.kinectVideoTimer.Enabled = true;
+            this.kinectVideoTimer.Interval = 50;
+            this.kinectVideoTimer.Tick += new System.EventHandler(this.kinectVideoTimer_Tick);
+            // 
             // TaichiFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -622,6 +630,7 @@ namespace Computer_Prototype
         private Button buttonAbort;
         private PictureBox pictureBoxKinectVideoStream;
         private ProgressBar progressBarStats;
+        public Timer kinectVideoTimer;
     }
 }
 
