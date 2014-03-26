@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Kinect;
-
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Runtime.InteropServices;
@@ -22,15 +21,18 @@ namespace TaichiKinect
         public KinectSensor kinect;
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
-        private WriteableBitmap colorBitmap;
+        Bitmap kinectSkel;
         Bitmap kinectVideo;
+        Bitmap finalImage;
+
         IntPtr colorPtr;
-        int test = 0;
+        Graphics g;
         
         public TaichiWindow()
         {
             InitializeComponent();
             this.label_connection_status.Text = "Connecting..";
+            finalImage = new Bitmap(this.pictureBox_videostream.Width, this.pictureBox_videostream.Height);
             foreach (var potentialSensor in KinectSensor.KinectSensors)
             {
                 if (potentialSensor.Status == KinectStatus.Connected)
@@ -55,7 +57,7 @@ namespace TaichiKinect
 
                 // set up color stream
                 this.colorPixels = new byte[this.kinect.ColorStream.FramePixelDataLength];
-                this.colorBitmap = new WriteableBitmap(this.kinect.ColorStream.FrameWidth, this.kinect.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
+                //this.colorBitmap = new WriteableBitmap(this.kinect.ColorStream.FrameWidth, this.kinect.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
                 this.kinect.ColorFrameReady += this.kinectSensorColorFrameReady;//this.kinectSensorColorFrameReady;
                
                 // start the kinect              
@@ -64,8 +66,7 @@ namespace TaichiKinect
         }
 
         private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        {
- 
+        { 
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
@@ -80,19 +81,30 @@ namespace TaichiKinect
                             Point headPoint = getPoint(s,JointType.Head);
                             //shoulder center
                             Point neckPoint = getPoint(s,JointType.ShoulderCenter);
+                            kinectSkel = new Bitmap(
+                                this.pictureBox_videostream.Width,
+                                this.pictureBox_videostream.Height
+                                );
+                            g = Graphics.FromImage(kinectSkel);
 
-                            //Graphics g = Graphics.FromImage(kinectVideo);
-                            //g.DrawLine(Pens.Red, headPoint, neckPoint);
-                            this.label_connection_status.Text = "x: " + headPoint.X + ", y: " + headPoint.Y;
+                            DrawBone(JointType.Head,JointType.ShoulderCenter,s,g);
+                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, g);
+                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, g);
+                            DrawBone(JointType.WristRight, JointType.ShoulderRight, s, g);
+                            DrawBone(JointType.WristLeft, JointType.ShoulderLeft, s, g);
+
+                            int x = headPoint.X;
+                            int y= headPoint.Y;
+                            if (x != 0 || y != 0)
+                            {
+                                this.label_connection_status.Text = "x: " + x + ", y: " + y;
+                            }
+                            
                         }
-                        //this.label_connection_status.Text = "x: " + getPoint(s.Joints[JointType.Head].Position).X + "y: " + getPoint(s.Joints[JointType.Head].Position).Y;
-                        //this.label_connection_status.Text = "x:" + s.Joints[JointType.Head].Position.X.ToString() + "," + "y:" + s.Position.Y.ToString() + "," + "z:" + s.Position.Z.ToString();
+                        
                     }
                 }
             }
-
-            // Draw Skeleton
-
         }
 
         private Point getPoint(Skeleton s,JointType j)
@@ -103,31 +115,50 @@ namespace TaichiKinect
             return new System.Drawing.Point(colorpoint.X,colorpoint.Y);
         }
 
+        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g)
+        {
+            Point p1 = getPoint(s,j1);
+            Point p2 = getPoint(s,j2);
+            if (g != null)
+            {
+                try
+                {
+                    g.DrawLine(Pens.Red, p1, p2);
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            
+        }
+
+
         private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
-        using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
-        {
-            if (colorFrame != null)
-            {           
-            if (colorPixels == null) colorPixels = new byte[colorFrame.PixelDataLength];
-            colorFrame.CopyPixelDataTo(this.colorPixels);
-            colorFrame.CopyPixelDataTo(colorPixels);
+            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+            {
+                if (colorFrame != null)
+                {           
+                if (colorPixels == null) colorPixels = new byte[colorFrame.PixelDataLength];
+                colorFrame.CopyPixelDataTo(this.colorPixels);
+                colorFrame.CopyPixelDataTo(colorPixels);
 
-            Marshal.FreeHGlobal(colorPtr);
-            colorPtr = Marshal.AllocHGlobal(colorPixels.Length);
-            Marshal.Copy(colorPixels, 0, colorPtr, colorPixels.Length);
+                Marshal.FreeHGlobal(colorPtr);
+                colorPtr = Marshal.AllocHGlobal(colorPixels.Length);
+                Marshal.Copy(colorPixels, 0, colorPtr, colorPixels.Length);
 
-            kinectVideo = new Bitmap(
-                colorFrame.Width,
-                colorFrame.Height,
-                colorFrame.Width * colorFrame.BytesPerPixel,
-                System.Drawing.Imaging.PixelFormat.Format32bppRgb,
-                colorPtr);
-
-            this.pictureBox_videostream.Image = kinectVideo;
-            }
-        }           
-        test++;
+                kinectVideo = new Bitmap(
+                    //colorFrame.Width,
+                    //colorFrame.Height,
+                    this.pictureBox_videostream.Width,
+                    this.pictureBox_videostream.Height,
+                    colorFrame.Width * colorFrame.BytesPerPixel,
+                    System.Drawing.Imaging.PixelFormat.Format32bppRgb,
+                    colorPtr);                                             
+                }
+            }           
+        
         }
 
         private void button_up_Click(object sender, EventArgs e)
@@ -154,15 +185,21 @@ namespace TaichiKinect
 
         private void timerElapsedEvent(object sender, EventArgs e)
         {
-
-            foreach (Skeleton skel in skeletonData)
+            // update kinect bitmap   
+            using (g = Graphics.FromImage(finalImage))
             {
-                if (skel != null)
+                g.Clear(System.Drawing.Color.Black);
+                // overlay
+                if (kinectVideo != null && kinectSkel != null)
                 {
-                    this.label_connection_status.Text = skel.TrackingId.ToString();
+                    g.DrawImage(kinectVideo, new Rectangle(-10, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
+                    g.DrawImage(kinectSkel, new Rectangle(-60, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
                 }
                 
+
+                this.pictureBox_videostream.Image = finalImage;
             }
+            
         }
     }
 }
