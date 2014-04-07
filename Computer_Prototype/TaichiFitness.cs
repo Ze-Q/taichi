@@ -364,5 +364,10 @@ namespace Computer_Prototype
             
         }
 
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -59,11 +59,9 @@ namespace Computer_Prototype
             this.highscorePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.progressBarStats = new System.Windows.Forms.ProgressBar();
             this.kinectVideoTimer = new System.Windows.Forms.Timer(this.components);
             this.timerMoves = new System.Windows.Forms.Timer(this.components);
             this.mainMenuTableLayout.SuspendLayout();
@@ -285,7 +283,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -318,7 +316,7 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(382, 0);
+            this.label5.Location = new System.Drawing.Point(381, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(300, 117);
@@ -455,12 +453,10 @@ namespace Computer_Prototype
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 618F));
-            this.tableLayoutPanel6.Controls.Add(this.pictureBox2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.button2, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.button1, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.progressBarStats, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, -3);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -477,27 +473,13 @@ namespace Computer_Prototype
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(4, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(4, 95);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(425, 349);
+            this.pictureBox2.Size = new System.Drawing.Size(454, 181);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(530, 78);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(482, 216);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Statistics: 89%";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -538,16 +520,6 @@ namespace Computer_Prototype
             this.button1.Text = "Continue with next form";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // progressBarStats
-            // 
-            this.progressBarStats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBarStats.Location = new System.Drawing.Point(465, 375);
-            this.progressBarStats.Name = "progressBarStats";
-            this.progressBarStats.Size = new System.Drawing.Size(612, 77);
-            this.progressBarStats.TabIndex = 5;
-            this.progressBarStats.Value = 89;
-            this.progressBarStats.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // kinectVideoTimer
             // 
@@ -613,7 +585,6 @@ namespace Computer_Prototype
         private System.Windows.Forms.Panel highscorePanel;
         private System.Windows.Forms.Panel moveListPanel;
         private System.Windows.Forms.Panel gamePanel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -635,7 +606,6 @@ namespace Computer_Prototype
         private PictureBox pictureBox2;
         private Button buttonAbort;
         private PictureBox pictureBoxKinectVideoStream;
-        private ProgressBar progressBarStats;
         public Timer kinectVideoTimer;
         private Timer timerMoves;
     }
