@@ -42,6 +42,7 @@ namespace TaichiKinect
             this.pictureBox_videostream = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_start = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_videostream)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -68,7 +69,7 @@ namespace TaichiKinect
             // 
             // button_down
             // 
-            this.button_down.Location = new System.Drawing.Point(3, 60);
+            this.button_down.Location = new System.Drawing.Point(3, 76);
             this.button_down.Name = "button_down";
             this.button_down.Size = new System.Drawing.Size(58, 23);
             this.button_down.TabIndex = 2;
@@ -78,7 +79,6 @@ namespace TaichiKinect
             // 
             // timer_info_update
             // 
-            this.timer_info_update.Enabled = true;
             this.timer_info_update.Interval = 50;
             this.timer_info_update.Tick += new System.EventHandler(this.timerElapsedEvent);
             // 
@@ -90,6 +90,7 @@ namespace TaichiKinect
             this.pictureBox_videostream.Size = new System.Drawing.Size(537, 395);
             this.pictureBox_videostream.TabIndex = 3;
             this.pictureBox_videostream.TabStop = false;
+            this.pictureBox_videostream.Click += new System.EventHandler(this.pictureBox_videostream_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -114,13 +115,25 @@ namespace TaichiKinect
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.button_up, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button_down, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_start, 0, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(608, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(64, 100);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(64, 192);
             this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // btn_start
+            // 
+            this.btn_start.Location = new System.Drawing.Point(3, 129);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(58, 28);
+            this.btn_start.TabIndex = 3;
+            this.btn_start.Text = "Start";
+            this.btn_start.UseVisualStyleBackColor = true;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
             // TaichiWindow
             // 
@@ -148,6 +161,7 @@ namespace TaichiKinect
         private PictureBox pictureBox_videostream;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
+        private Button btn_start;
 
     }
 }

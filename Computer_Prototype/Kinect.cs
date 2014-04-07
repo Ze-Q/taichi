@@ -14,28 +14,22 @@ namespace Computer_Prototype
         private KinectSensor kinect;
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
-       // private WriteableBitmap colorBitmap;
+        int x, y;
+
         Bitmap kinectSkel;
         Bitmap kinectVideo;
         Bitmap finalImage;
-
         IntPtr colorPtr;
-        Graphics g;
-        Point kinectVideoDimensions;
-       
+        Graphics graphics;       
 
-        public Kinect(Point kinectVideoDimensions)
-        {
-            this.kinectVideoDimensions = kinectVideoDimensions;
-
-            this.finalImage = new Bitmap(kinectVideoDimensions.X,kinectVideoDimensions.Y);
-
+        public Kinect()
+        {                    
+            // detect Kinect Sensor
             foreach (var potentialSensor in KinectSensor.KinectSensors)
             {
                 if (potentialSensor.Status == KinectStatus.Connected)
                 {
-                    kinect = potentialSensor;
-                    
+                    kinect = potentialSensor;                
                     break;
                 }
             }
@@ -47,7 +41,6 @@ namespace Computer_Prototype
                 this.kinect.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
                 this.kinect.SkeletonStream.Enable();
 
-
                 //set up skeleton object            
                 skeletonData = new Skeleton[kinect.SkeletonStream.FrameSkeletonArrayLength]; // Allocate ST data
                 this.kinect.SkeletonFrameReady += this.kinectSkeletonFrameReady;
@@ -58,23 +51,30 @@ namespace Computer_Prototype
 
                 // start the kinect              
                 this.kinect.Start();
+                
             }
+            x = TaichiFitness.KinectVideoInstance.Width;
+            y = TaichiFitness.KinectVideoInstance.Height;
+            this.finalImage =  new Bitmap(x, y);
+            //TaichiFitness.KinectVideoInstance.Image = this.finalImage;
         }
-        public Bitmap updateKinect()
+        
+        public void updateKinect()
         {
             // update kinect bitmap   
-            using (g = Graphics.FromImage(finalImage))
+            using (Graphics g = Graphics.FromImage(finalImage))
             {
                 g.Clear(System.Drawing.Color.Black);
-                // overlay
-                if (kinectVideo != null && kinectSkel != null)
+                //overlay
+                if (kinectVideo != null)
                 {
-                    g.DrawImage(kinectVideo, new Rectangle(0, 0, this.kinectVideoDimensions.X, this.kinectVideoDimensions.Y));
-                    g.DrawImage(kinectSkel, new Rectangle(0, 0, this.kinectVideoDimensions.X, this.kinectVideoDimensions.Y));
+                    g.DrawImage(kinectVideo, new Rectangle(0, 0, x, y));                    
                 }
-                
-
-               return finalImage;
+                if (kinectSkel != null)
+                {
+                    g.DrawImage(kinectSkel, new Rectangle(0, 0, x, y));
+                }
+                TaichiFitness.KinectVideoInstance.Image = finalImage;
             }
         }
         private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
@@ -91,42 +91,48 @@ namespace Computer_Prototype
                         {
                             
                             kinectSkel = new Bitmap(                               
-                                this.kinectVideoDimensions.X,
-                                this.kinectVideoDimensions.Y
+                                x,
+                                y
                                 );
-                            //g = Graphics.FromImage(kinectSkel);
+                            graphics = Graphics.FromImage(kinectSkel);
+                            
+                            // head
+                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics,Pens.Red);
 
-                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, g);
                             // shoulders 
-                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, g);
-                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, g);
-                            // bicep/tricep
-                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, g);
-                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, g);
-                            // forearm
-                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, g);
-                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, g);
+                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Pens.Red);
+                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Pens.Red);
 
+                            // bicep/tricep
+                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Pens.Red);
+                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Pens.Red);
+
+                            // forearm
+                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Pens.Red);
+                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Pens.Red);
 
                             // torso
-                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, g);
+                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Pens.Red);
 
                             // hips
-                            //DrawBone(JointType.HipRight, JointType.Spine, s, g);
-                            //DrawBone(JointType.HipLeft, JointType.Spine, s, g);
+                            DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Pens.Red);
+                            DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Pens.Red);
 
                             //// quads
-                            //DrawBone(JointType.HipRight, JointType.KneeRight, s, g);
-                            //DrawBone(JointType.HipLeft, JointType.KneeLeft, s, g);
+                            DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Pens.Red);
+                            DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Pens.Red);
 
                             //// shin
-                            //DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, g);
-                            //DrawBone(JointType.AnkleRight, JointType.KneeRight, s, g);
+                            DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Pens.Red);
+                            DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Pens.Red);
 
+                            //TaichiFitness.KinectVideoInstance.Image = kinectSkel;
                         }
 
                     }
                 }
+
+
             }
         }       
         public void closeKinect()
@@ -148,13 +154,13 @@ namespace Computer_Prototype
                     Marshal.Copy(colorPixels, 0, colorPtr, colorPixels.Length);
 
                     kinectVideo = new Bitmap(
-                        colorFrame.Width,
-                        colorFrame.Height,
+                        x,
+                        y,
                         colorFrame.Width * colorFrame.BytesPerPixel,
                         System.Drawing.Imaging.PixelFormat.Format32bppRgb,
                         colorPtr);
 
-                    TaichiFitness.KinectVideoInstance.Image = kinectVideo;
+                    //TaichiFitness.KinectVideoInstance.Image = kinectVideo;
                 }
             }
         }
@@ -165,19 +171,20 @@ namespace Computer_Prototype
             ColorImagePoint colorpoint = kinect.CoordinateMapper.MapSkeletonPointToColorPoint(skelpoint, ColorImageFormat.RgbResolution640x480Fps30);
             return new System.Drawing.Point(colorpoint.X, colorpoint.Y);
         }
-        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g)
+        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g, Pen color)
         {
             Point p1 = getPoint(s, j1);
             Point p2 = getPoint(s, j2);
+
             if (g != null)
             {
                 try
                 {
-                    g.DrawLine(Pens.Red, p1, p2);
+                    g.DrawLine(color, p1, p2);
                 }
                 catch (Exception e)
-                {
-
+                {                    
+                    Console.WriteLine(e.ToString());
                 }
             }
 

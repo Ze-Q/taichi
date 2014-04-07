@@ -61,12 +61,14 @@ namespace TaichiKinect
                 this.kinect.ColorFrameReady += this.kinectSensorColorFrameReady;//this.kinectSensorColorFrameReady;
                
                 // start the kinect              
-               this.kinect.Start();           
+               this.kinect.Start();
+               this.label_connection_status.Text = "Kinect Started!";
             }
         }
 
         private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        { 
+        {
+            this.label_connection_status.Text = "Skeleton Frame Ready!";
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
@@ -121,8 +123,7 @@ namespace TaichiKinect
                                 this.label_connection_status.Text = "x: " + x + ", y: " + y;
                             }
                             
-                        }
-                        
+                        }   
                     }
                 }
             }
@@ -157,6 +158,7 @@ namespace TaichiKinect
 
         private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
+            this.label_connection_status.Text = "Color Frame Ready!";
             using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
             {
                 if (colorFrame != null)
@@ -217,10 +219,19 @@ namespace TaichiKinect
                     g.DrawImage(kinectSkel, new Rectangle(0, 0, this.pictureBox_videostream.Width, this.pictureBox_videostream.Height));
                 }
                 
-
                 this.pictureBox_videostream.Image = finalImage;
             }
             
+        }
+
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            this.timer_info_update.Enabled = true;
+        }
+
+        private void pictureBox_videostream_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

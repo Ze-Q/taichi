@@ -65,6 +65,7 @@ namespace Computer_Prototype
             this.button1 = new System.Windows.Forms.Button();
             this.progressBarStats = new System.Windows.Forms.ProgressBar();
             this.kinectVideoTimer = new System.Windows.Forms.Timer(this.components);
+            this.timerMoves = new System.Windows.Forms.Timer(this.components);
             this.mainMenuTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mainMenuPanel.SuspendLayout();
@@ -111,6 +112,7 @@ namespace Computer_Prototype
             // quitButton
             // 
             this.quitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.quitButton.BackColor = System.Drawing.Color.White;
             this.quitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quitButton.Location = new System.Drawing.Point(115, 566);
             this.quitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -118,7 +120,7 @@ namespace Computer_Prototype
             this.quitButton.Size = new System.Drawing.Size(849, 82);
             this.quitButton.TabIndex = 2;
             this.quitButton.Text = "Quit";
-            this.quitButton.UseVisualStyleBackColor = true;
+            this.quitButton.UseVisualStyleBackColor = false;
             this.quitButton.Click += new System.EventHandler(this.exit_Click);
             // 
             // titleLabel
@@ -167,7 +169,7 @@ namespace Computer_Prototype
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 70);
@@ -283,7 +285,7 @@ namespace Computer_Prototype
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.09915F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90085F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 356F));
             this.tableLayoutPanel5.Controls.Add(this.button7, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button6, 0, 0);
@@ -316,10 +318,10 @@ namespace Computer_Prototype
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(384, 0);
+            this.label5.Location = new System.Drawing.Point(382, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(302, 117);
+            this.label5.Size = new System.Drawing.Size(300, 117);
             this.label5.TabIndex = 0;
             this.label5.Text = "List of Forms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -553,16 +555,20 @@ namespace Computer_Prototype
             this.kinectVideoTimer.Interval = 50;
             this.kinectVideoTimer.Tick += new System.EventHandler(this.kinectVideoTimer_Tick);
             // 
+            // timerMoves
+            // 
+            this.timerMoves.Tick += new System.EventHandler(this.timerMoves_Tick);
+            // 
             // TaichiFitness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
-            this.Controls.Add(this.mainMenuPanel);
             this.Controls.Add(this.moveListPanel);
-            this.Controls.Add(this.highscorePanel);
             this.Controls.Add(this.gamePanel);
+            this.Controls.Add(this.mainMenuPanel);
+            this.Controls.Add(this.highscorePanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -631,6 +637,7 @@ namespace Computer_Prototype
         private PictureBox pictureBoxKinectVideoStream;
         private ProgressBar progressBarStats;
         public Timer kinectVideoTimer;
+        private Timer timerMoves;
     }
 }
 

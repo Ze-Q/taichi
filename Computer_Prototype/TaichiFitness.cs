@@ -13,6 +13,13 @@ namespace Computer_Prototype
     public partial class TaichiFitness : Form
     {
         private static PictureBox kinectVideo;
+        public int elapsedTime;
+        public int pausedTime;
+        //public const int 
+        // formcode[form number, form segment time info]
+        private int[,] formcode = new int[,] { { 1, 1, 1, 1, 1 }, 
+                                               { 2, 2, 2, 2, 2 }, 
+                                               { 3, 3, 3, 3, 3 } }; 
         //Singleton VideoFeed for Kinect
         public static PictureBox KinectVideoInstance
         {
@@ -27,10 +34,13 @@ namespace Computer_Prototype
         public TaichiFitness()
         {
             InitializeComponent();
-            FileIO fileIO = new FileIO();
-            kinect = new Kinect(new Point(this.pictureBoxKinectVideoStream.Width, this.pictureBoxKinectVideoStream.Height));
+            //FileIO fileIO = new FileIO();
+            elapsedTime = 0;
+            pausedTime = 0;
             kinectVideo = this.pictureBoxKinectVideoStream;
-          
+            kinectVideoTimer.Enabled = false ;
+            kinect = new Kinect();
+      
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,9 +65,6 @@ namespace Computer_Prototype
         }
         private void exit_Click(object sender, EventArgs e)
         {
-            // Play GoodBye
-            //this.mainMenuTableLayout.Hide();
-
             DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -132,6 +139,7 @@ namespace Computer_Prototype
             this.labelGameMode.Text = "Tutorial";
             //this.videoTutorial.settings.autoStart = false;
             this.videoTutorial.URL = "./misc/tutorial.wmv";
+            this.kinectVideoTimer.Enabled = true;
         }
         private void startForm1_Click(object sender, EventArgs e)
         {
@@ -141,6 +149,9 @@ namespace Computer_Prototype
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm1.Text;
             this.videoTutorial.URL = "./misc/preparation.wmv";
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+            this.kinectVideoTimer.Enabled = true;
         }
         private void startForm2_Click(object sender, EventArgs e)
         {
@@ -150,6 +161,9 @@ namespace Computer_Prototype
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm2.Text;
             this.videoTutorial.URL = "./misc/preparation.wmv";
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+            this.kinectVideoTimer.Enabled = true;
         }
         private void startForm3_Click(object sender, EventArgs e)
         {
@@ -159,6 +173,9 @@ namespace Computer_Prototype
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm3.Text;
             this.videoTutorial.URL = "./misc/preparation.wmv";
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+            this.kinectVideoTimer.Enabled = true;
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -194,6 +211,7 @@ namespace Computer_Prototype
 
         private void videoTutorial_EndOfStream(object sender, AxWMPLib._WMPOCXEvents_EndOfStreamEvent e)
         {
+            this.kinectVideoTimer.Enabled = false;
             if (this.labelGameMode.Text == "Tutorial")
             {
                 this.moveListPanel.Hide();
@@ -258,6 +276,7 @@ namespace Computer_Prototype
             DialogResult dialog = MessageBox.Show("Are you sure that you want to exit?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
+                this.kinect.closeKinect();
                 Application.ExitThread();﻿
             }
 
@@ -287,7 +306,62 @@ namespace Computer_Prototype
 
         private void kinectVideoTimer_Tick(object sender, EventArgs e)
         {
-            this.pictureBoxKinectVideoStream.Image = kinect.updateKinect();            
+            kinect.updateKinect();
+
+        }
+
+        private void timerMoves_Tick(object sender, EventArgs e)
+        {
+            if (this.labelGameMode.Text == this.buttonForm1.Text )
+            {
+
+            }
+            else if (this.labelGameMode.Text == this.buttonForm2.Text)
+            {
+
+            }
+            else if (this.labelGameMode.Text == this.buttonForm3.Text)
+            {
+                
+            }
+
+            if (elapsedTime == 10)
+            {
+                if (pausedTime < 31)
+                {
+                    this.videoTutorial.Ctlcontrols.pause();
+                    pausedTime++;
+                }
+                else if (pausedTime >= 31)
+                {
+                    // restart pause
+                    this.videoTutorial.Ctlcontrols.play();
+                    pausedTime = 0; 
+                    elapsedTime++; 
+                }
+
+            }
+            if (elapsedTime == 20)
+            {
+                if (pausedTime < 31)
+                {
+                    this.videoTutorial.Ctlcontrols.pause();
+                    pausedTime++;
+                }
+                else if (pausedTime >= 31)
+                {
+                    // restart pause
+                    this.videoTutorial.Ctlcontrols.play();
+                    pausedTime = 0;
+                    elapsedTime++;
+                }
+
+            }
+            if (pausedTime == 0)
+            {
+                elapsedTime++;
+            }
+            
         }
 
     }
