@@ -98,7 +98,7 @@ namespace Computer_Prototype
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
                 this.labelGameMode.Text = this.buttonForm2.Text;
-                this.videoTutorial.URL = "./misc/preparation.wmv";
+                this.videoTutorial.URL = "./misc/White Crane-windows.wmv";
             }
             else if (labelGameMode.Text == this.buttonForm2.Text)
             {
@@ -107,7 +107,7 @@ namespace Computer_Prototype
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
                 this.labelGameMode.Text = this.buttonForm3.Text;
-                this.videoTutorial.URL = "./misc/preparation.wmv";
+                this.videoTutorial.URL = "./misc/Rollout-windows.wmv";
             }
             else if (labelGameMode.Text == this.buttonForm3.Text)
             {
@@ -138,7 +138,7 @@ namespace Computer_Prototype
             this.gamePanel.Show();
             this.labelGameMode.Text = "Tutorial";
             //this.videoTutorial.settings.autoStart = false;
-            this.videoTutorial.URL = "./misc/tutorial.wmv";
+            this.videoTutorial.URL = "./misc/Tutorial-windows.wmv";
             this.kinectVideoTimer.Enabled = true;
         }
         private void startForm1_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace Computer_Prototype
             this.highscorePanel.Hide();
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm2.Text;
-            this.videoTutorial.URL = "./misc/preparation.wmv";
+            this.videoTutorial.URL = "./misc/White Crane-windows.wmv";
             this.elapsedTime = 0;
             this.timerMoves.Enabled = true;
             this.kinectVideoTimer.Enabled = true;
@@ -172,7 +172,7 @@ namespace Computer_Prototype
             this.highscorePanel.Hide();
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm3.Text;
-            this.videoTutorial.URL = "./misc/preparation.wmv";
+            this.videoTutorial.URL = "./misc/Rollout-windows.wmv";
             this.elapsedTime = 0;
             this.timerMoves.Enabled = true;
             this.kinectVideoTimer.Enabled = true;
