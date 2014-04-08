@@ -68,7 +68,7 @@ namespace TaichiKinect
 
         private void kinectSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            this.label_connection_status.Text = "Skeleton Frame Ready!";
+            //this.label_connection_status.Text = "Skeleton Frame Ready!";
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) // Open the Skeleton frame
             {
                 if (skeletonFrame != null && this.skeletonData != null) // check that a frame is available
@@ -89,20 +89,39 @@ namespace TaichiKinect
                                 );
                             g = Graphics.FromImage(kinectSkel);
 
-                            DrawBone(JointType.Head,JointType.ShoulderCenter,s,g);
+                            Point shoulderright = getPoint(s, JointType.ShoulderRight);
+                            Point elbowright = getPoint(s, JointType.ElbowRight);
+                            Point wristright = getPoint(s, JointType.WristRight);
+                            int Angle = (int) ((Math.Atan2(shoulderright.Y - elbowright.Y, shoulderright.X - elbowright.X) - Math.Atan2(wristright.Y - elbowright.Y, wristright.X - elbowright.X)%(2*Math.PI))*180/Math.PI);
+                            if (Angle < 0)
+                            {
+                                Angle = Angle + 360;
+                            }
+                            this.label_connection_status.Text = Angle.ToString();
+
+                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, g, System.Drawing.Color.Red);
                             // shoulders 
-                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, g);
-                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, g);
+                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, g ,System.Drawing.Color.Red);
+                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, g, System.Drawing.Color.Red);
                             // bicep/tricep
-                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, g);
-                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, g);
+                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, g, System.Drawing.Color.Red);
+                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, g, System.Drawing.Color.Red);
                             // forearm
-                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, g);  
-                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, g);
+                            if (Angle < 90)
+                            {
+                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, g, System.Drawing.Color.Green);
+                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, g, System.Drawing.Color.Green);
+                            }
+                            else
+                            {
+                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, g, System.Drawing.Color.Red);
+                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, g, System.Drawing.Color.Red);
+                            }
+
 
 
                             // torso
-                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, g);
+                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, g, System.Drawing.Color.Red);
 
                             // hips
                             //DrawBone(JointType.HipRight, JointType.Spine, s, g);
@@ -120,7 +139,7 @@ namespace TaichiKinect
                             int y= headPoint.Y;
                             if (x != 0 || y != 0)
                             {
-                                this.label_connection_status.Text = "x: " + x + ", y: " + y;
+                                //this.label_connection_status.Text = "x: " + x + ", y: " + y;
                             }
                             
                         }   
@@ -137,19 +156,21 @@ namespace TaichiKinect
             return new System.Drawing.Point(colorpoint.X,colorpoint.Y);
         }
 
-        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g)
+        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g, System.Drawing.Color color)
         {
-            Point p1 = getPoint(s,j1);
-            Point p2 = getPoint(s,j2);
+            Point p1 = getPoint(s, j1);
+            Point p2 = getPoint(s, j2);
+            System.Drawing.Pen pen = new System.Drawing.Pen(new SolidBrush(color), 2);
+
             if (g != null)
             {
                 try
                 {
-                    g.DrawLine(Pens.Red, p1, p2);
+                    g.DrawLine(pen, p1, p2);
                 }
                 catch (Exception e)
                 {
-
+                    Console.WriteLine(e.ToString());
                 }
             }
             
@@ -158,7 +179,7 @@ namespace TaichiKinect
 
         private void kinectSensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
-            this.label_connection_status.Text = "Color Frame Ready!";
+            //this.label_connection_status.Text = "Color Frame Ready!";
             using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
             {
                 if (colorFrame != null)

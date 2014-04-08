@@ -15,7 +15,7 @@ namespace Computer_Prototype
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
         int x, y;
-
+        public int[] angles;
         Bitmap kinectSkel;
         Bitmap kinectVideo;
         Bitmap finalImage;
@@ -57,6 +57,12 @@ namespace Computer_Prototype
             y = TaichiFitness.KinectVideoInstance.Height;
             this.finalImage =  new Bitmap(x, y);
             //TaichiFitness.KinectVideoInstance.Image = this.finalImage;
+            angles = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                angles[i] = 0;
+            }
         }
         
         public void updateKinect()
@@ -95,36 +101,59 @@ namespace Computer_Prototype
                                 y
                                 );
                             graphics = Graphics.FromImage(kinectSkel);
+                            // get point
+                            Point shouldercenter = getPoint(s, JointType.ShoulderCenter);
+                            
+                            Point shoulderleft = getPoint(s, JointType.ShoulderLeft);
+                            // make vector
                             
                             // head
-                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics,Pens.Red);
+                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics,Color.Red);
 
                             // shoulders 
-                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Pens.Red);
-                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Pens.Red);
+                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Red);
+                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Red);
 
+
+                            Point shoulderright = getPoint(s, JointType.ShoulderRight);
+                            Point elbowright = getPoint(s,JointType.ElbowRight);
+                            Point wristright = getPoint(s,JointType.WristRight);
+
+                            int Angle = (int)((Math.Atan2(shoulderright.Y - elbowright.Y, shoulderright.X - elbowright.X) - Math.Atan2(wristright.Y - elbowright.Y, wristright.X - elbowright.X) % (2 * Math.PI)) * 180 / Math.PI);
+                            if (Angle < 0)
+                            {
+                                Angle = Angle + 360;
+                            }
                             // bicep/tricep
-                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Pens.Red);
-                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Pens.Red);
-
+                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Red);
+                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Red);
                             // forearm
-                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Pens.Red);
-                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Pens.Red);
+                            if (Angle < 90 )
+                            {
+                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Green);
+                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Green);
+                            }
+                            else
+                            {
+                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Red);
+                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Red);
+                            }
+
 
                             // torso
-                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Pens.Red);
+                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Red);
 
                             // hips
-                            DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Pens.Red);
-                            DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Pens.Red);
+                            DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Red);
+                            DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Red);
 
                             //// quads
-                            DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Pens.Red);
-                            DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Pens.Red);
+                            DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Red);
+                            DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Red);
 
                             //// shin
-                            DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Pens.Red);
-                            DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Pens.Red);
+                            DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Red);
+                            DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Red);
 
                             //TaichiFitness.KinectVideoInstance.Image = kinectSkel;
                         }
@@ -171,16 +200,17 @@ namespace Computer_Prototype
             ColorImagePoint colorpoint = kinect.CoordinateMapper.MapSkeletonPointToColorPoint(skelpoint, ColorImageFormat.RgbResolution640x480Fps30);
             return new System.Drawing.Point(colorpoint.X, colorpoint.Y);
         }
-        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g, Pen color)
+        private void DrawBone(JointType j1, JointType j2, Skeleton s, Graphics g, Color color)
         {
             Point p1 = getPoint(s, j1);
             Point p2 = getPoint(s, j2);
+            Pen pen = new Pen(new SolidBrush(color),2);
 
             if (g != null)
             {
                 try
                 {
-                    g.DrawLine(color, p1, p2);
+                    g.DrawLine(pen, p1, p2);
                 }
                 catch (Exception e)
                 {                    

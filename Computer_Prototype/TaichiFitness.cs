@@ -15,9 +15,11 @@ namespace Computer_Prototype
         private static PictureBox kinectVideo;
         public int elapsedTime;
         public int pausedTime;
-        //public const int 
+        public const int PAUSE_TIME = 10;
+
+        int score;
         // formcode[form number, form segment time info]
-        private int[,] formcode = new int[,] { { 1, 1, 1, 1, 1 }, 
+        private int[,] formCode = new int[,] { { 1, 10, 30, 40, 50 }, 
                                                { 2, 2, 2, 2, 2 }, 
                                                { 3, 3, 3, 3, 3 } }; 
         //Singleton VideoFeed for Kinect
@@ -37,8 +39,9 @@ namespace Computer_Prototype
             //FileIO fileIO = new FileIO();
             elapsedTime = 0;
             pausedTime = 0;
+            score = 0;
             kinectVideo = this.pictureBoxKinectVideoStream;
-            kinectVideoTimer.Enabled = false ;
+            //kinectTimer.Enabled = false ;
             kinect = new Kinect();
       
         }
@@ -89,8 +92,13 @@ namespace Computer_Prototype
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nextForm_Click(object sender, EventArgs e)
         {
+            this.score = 0;
+            this.pausedTime = 0;
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+
             if (labelGameMode.Text == this.buttonForm1.Text)
             {
                 this.moveListPanel.Hide();
@@ -98,7 +106,7 @@ namespace Computer_Prototype
                 this.highscorePanel.Hide();
                 this.gamePanel.Show();
                 this.labelGameMode.Text = this.buttonForm2.Text;
-                this.videoTutorial.URL = "./misc/White Crane-windows.wmv";
+                this.videoTutorial.URL = "./misc/White_Crane.mp4";
             }
             else if (labelGameMode.Text == this.buttonForm2.Text)
             {
@@ -139,34 +147,50 @@ namespace Computer_Prototype
             this.labelGameMode.Text = "Tutorial";
             //this.videoTutorial.settings.autoStart = false;
             this.videoTutorial.URL = "./misc/Tutorial-windows.wmv";
-            this.kinectVideoTimer.Enabled = true;
+            //this.kinectTimer.Enabled = true;
         }
         private void startForm1_Click(object sender, EventArgs e)
         {
+            this.score = 0;
+            this.pausedTime = 0;
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+            
             this.moveListPanel.Hide();
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
             this.gamePanel.Show();
+            //
             this.labelGameMode.Text = this.buttonForm1.Text;
             this.videoTutorial.URL = "./misc/preparation.wmv";
             this.elapsedTime = 0;
             this.timerMoves.Enabled = true;
-            this.kinectVideoTimer.Enabled = true;
+           // this.kinectTimer.Enabled = true;
         }
         private void startForm2_Click(object sender, EventArgs e)
         {
+            this.score = 0;
+            this.pausedTime = 0;
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+
             this.moveListPanel.Hide();
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
             this.gamePanel.Show();
             this.labelGameMode.Text = this.buttonForm2.Text;
-            this.videoTutorial.URL = "./misc/White Crane-windows.wmv";
+            this.videoTutorial.URL = "./misc/White_Crane.mp4";
             this.elapsedTime = 0;
             this.timerMoves.Enabled = true;
-            this.kinectVideoTimer.Enabled = true;
+            //this.kinectTimer.Enabled = true;
         }
         private void startForm3_Click(object sender, EventArgs e)
         {
+            this.score = 0;
+            this.pausedTime = 0;
+            this.elapsedTime = 0;
+            this.timerMoves.Enabled = true;
+
             this.moveListPanel.Hide();
             this.mainMenuPanel.Hide();
             this.highscorePanel.Hide();
@@ -175,7 +199,7 @@ namespace Computer_Prototype
             this.videoTutorial.URL = "./misc/Rollout-windows.wmv";
             this.elapsedTime = 0;
             this.timerMoves.Enabled = true;
-            this.kinectVideoTimer.Enabled = true;
+            //this.kinectTimer.Enabled = true;
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -211,7 +235,26 @@ namespace Computer_Prototype
 
         private void videoTutorial_EndOfStream(object sender, AxWMPLib._WMPOCXEvents_EndOfStreamEvent e)
         {
-            this.kinectVideoTimer.Enabled = false;
+            this.timerMoves.Enabled = false;
+            //this.kinectTimer.Enabled = false;
+            switch (score)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+            }
+                    
             if (this.labelGameMode.Text == "Tutorial")
             {
                 this.moveListPanel.Hide();
@@ -220,7 +263,7 @@ namespace Computer_Prototype
                 this.gamePanel.Hide();
             }
             else
-            {
+            {               
                 this.moveListPanel.Hide();
                 this.mainMenuPanel.Hide();
                 this.highscorePanel.Show();
@@ -242,6 +285,7 @@ namespace Computer_Prototype
                 }
                 else
                 {
+                    this.timerMoves.Enabled = false;
                     this.moveListPanel.Hide();
                     this.mainMenuPanel.Hide();
                     this.highscorePanel.Show();
@@ -312,62 +356,127 @@ namespace Computer_Prototype
 
         private void timerMoves_Tick(object sender, EventArgs e)
         {
-            if (this.labelGameMode.Text == this.buttonForm1.Text )
+            int[] angles = new int[10];
+            for (int i = 0; i < 10; i++)
             {
+                angles[i] = 0;
+            }
 
+            if (this.labelGameMode.Text == this.buttonForm1.Text)
+            {
+                if (elapsedTime == formCode[0, 0])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 1])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 2])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 3])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 4])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+
+                if (pausedTime == 0)
+                {
+                    elapsedTime++;
+                }
             }
             else if (this.labelGameMode.Text == this.buttonForm2.Text)
             {
+                if (elapsedTime == formCode[0, 0] || elapsedTime == formCode[0, 1] || elapsedTime == formCode[0, 2] || elapsedTime == formCode[0, 3] || elapsedTime == formCode[0, 4])
+                {
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
 
+
+
+                if (pausedTime == 0)
+                {
+                    elapsedTime++;
+                }
             }
             else if (this.labelGameMode.Text == this.buttonForm3.Text)
             {
-                
-            }
 
-            if (elapsedTime == 10)
-            {
-                if (pausedTime < 31)
-                {
-                    this.videoTutorial.Ctlcontrols.pause();
-                    pausedTime++;
-                }
-                else if (pausedTime >= 31)
-                {
-                    // restart pause
-                    this.videoTutorial.Ctlcontrols.play();
-                    pausedTime = 0; 
-                    elapsedTime++; 
-                }
-
-            }
-            if (elapsedTime == 20)
-            {
-                if (pausedTime < 31)
-                {
-                    this.videoTutorial.Ctlcontrols.pause();
-                    pausedTime++;
-                }
-                else if (pausedTime >= 31)
-                {
-                    // restart pause
-                    this.videoTutorial.Ctlcontrols.play();
-                    pausedTime = 0;
-                    elapsedTime++;
-                }
-
-            }
-            if (pausedTime == 0)
-            {
-                elapsedTime++;
             }
             
         }
 
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
