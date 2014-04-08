@@ -20,7 +20,8 @@ namespace Computer_Prototype
         Bitmap kinectVideo;
         Bitmap finalImage;
         IntPtr colorPtr;
-        Graphics graphics;       
+        Graphics graphics;
+        public bool moveCompleted;
 
         public Kinect()
         {                    
@@ -57,12 +58,13 @@ namespace Computer_Prototype
             y = TaichiFitness.KinectVideoInstance.Height;
             this.finalImage =  new Bitmap(x, y);
             //TaichiFitness.KinectVideoInstance.Image = this.finalImage;
-            angles = new int[10];
+            angles = new int[4];
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 4; i++)
             {
                 angles[i] = 0;
             }
+            moveCompleted = false;
         }
         
         public void updateKinect()
@@ -102,60 +104,113 @@ namespace Computer_Prototype
                                 );
                             graphics = Graphics.FromImage(kinectSkel);
                             // get point
-                            Point shouldercenter = getPoint(s, JointType.ShoulderCenter);
-                            
-                            Point shoulderleft = getPoint(s, JointType.ShoulderLeft);
-                            // make vector
-                            
-                            // head
-                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics,Color.Red);
-
-                            // shoulders 
-                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Red);
-                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Red);
-
-
+                            int[] skelAngle = new int[4]; 
                             Point shoulderright = getPoint(s, JointType.ShoulderRight);
-                            Point elbowright = getPoint(s,JointType.ElbowRight);
-                            Point wristright = getPoint(s,JointType.WristRight);
+                            Point elbowright = getPoint(s, JointType.ElbowRight);
+                            Point wristright = getPoint(s, JointType.WristRight);
 
-                            int Angle = (int)((Math.Atan2(shoulderright.Y - elbowright.Y, shoulderright.X - elbowright.X) - Math.Atan2(wristright.Y - elbowright.Y, wristright.X - elbowright.X) % (2 * Math.PI)) * 180 / Math.PI);
+                            Point shouldercenter = getPoint(s, JointType.ShoulderCenter);
+
+                            Point shoulderleft = getPoint(s, JointType.ShoulderLeft);
+                            Point elbowleft = getPoint(s, JointType.ElbowLeft);
+                            Point wristleft = getPoint(s, JointType.WristLeft);
+
+                            int Angle = (int)((Math.Atan2(shoulderright.Y - elbowright.Y, shoulderright.X - elbowright.X)
+                                        - Math.Atan2(wristright.Y - elbowright.Y, wristright.X - elbowright.X)
+                                        % (2 * Math.PI)) * 180 / Math.PI);
                             if (Angle < 0)
                             {
                                 Angle = Angle + 360;
                             }
-                            // bicep/tricep
-                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Red);
-                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Red);
-                            // forearm
-                            if (Angle < 90 )
+                            // left elbow
+                            skelAngle[0] = (int)((Math.Atan2(shoulderleft.Y - elbowleft.Y, shoulderleft.X - elbowleft.X)
+                                         - Math.Atan2(wristleft.Y - elbowleft.Y, wristleft.X - elbowleft.X)
+                                         % (2 * Math.PI)) * 180 / Math.PI);
+                            // left shoulder
+                            skelAngle[1] = (int)((Math.Atan2(elbowleft.Y - shoulderleft.Y, elbowleft.X - shoulderleft.X)
+                                            - Math.Atan2(shouldercenter.Y - shoulderleft.Y, shouldercenter.X - shoulderleft.X)
+                                            % (2 * Math.PI)) * 180 / Math.PI);
+                            //right elbow
+                            skelAngle[2] = (int)((Math.Atan2(shoulderright.Y - elbowright.Y, shoulderright.X - elbowright.X)
+                                            - Math.Atan2(wristright.Y - elbowright.Y, wristright.X - elbowright.X)
+                                            % (2 * Math.PI)) * 180 / Math.PI);
+                            // right shoulder
+                            skelAngle[3] = (int)((Math.Atan2(elbowright.Y - shoulderright.Y, elbowright.X - shoulderright.X)
+                                            - Math.Atan2(shouldercenter.Y - shoulderright.Y, shouldercenter.X - shoulderright.X)
+                                            % (2 * Math.PI)) * 180 / Math.PI);
+
+
+                            for (int i = 0; i < skelAngle.Length; i++)
                             {
+                                if (skelAngle[i] < 0)
+                                {
+                                    skelAngle[i] = skelAngle[i] + 360;
+                                }                               
+                            }
+                            if (moveCompleted)
+                            {
+                                DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics, Color.Green);
+
+                                // shoulders 
+                                DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Green);
+                                DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Green);
+
+                                // bicep/tricep
+                                DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Green);
+                                DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Green);
+                                // forearm
+
                                 DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Green);
                                 DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Green);
+
+                                // torso
+                                DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Green);
+
+                                // hips
+                                DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Green);
+                                DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Green);
+
+                                //// quads
+                                DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Green);
+                                DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Green);
+
+                                //// shin
+                                DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Green);
+                                DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Green);
                             }
                             else
                             {
+                                // head
+                                DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics, Color.Red);
+
+                                // shoulders 
+                                DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Red);
+                                DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Red);
+
+                                // bicep/tricep
+                                DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Red);
+                                DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Red);
+                                // forearm
+
                                 DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Red);
                                 DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Red);
+
+                                // torso
+                                DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Red);
+
+                                // hips
+                                DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Red);
+                                DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Red);
+
+                                //// quads
+                                DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Red);
+                                DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Red);
+
+                                //// shin
+                                DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Red);
+                                DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Red);
                             }
-
-
-                            // torso
-                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Red);
-
-                            // hips
-                            DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Red);
-                            DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Red);
-
-                            //// quads
-                            DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Red);
-                            DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Red);
-
-                            //// shin
-                            DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Red);
-                            DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Red);
-
-                            //TaichiFitness.KinectVideoInstance.Image = kinectSkel;
+                           
                         }
 
                     }

@@ -58,10 +58,10 @@ namespace Computer_Prototype
             this.videoTutorial = new AxWMPLib.AxWindowsMediaPlayer();
             this.highscorePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelScore = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxScore = new System.Windows.Forms.PictureBox();
             this.kinectTimer = new System.Windows.Forms.Timer(this.components);
             this.timerMoves = new System.Windows.Forms.Timer(this.components);
             this.mainMenuTableLayout.SuspendLayout();
@@ -78,7 +78,7 @@ namespace Computer_Prototype
             ((System.ComponentModel.ISupportInitialize)(this.videoTutorial)).BeginInit();
             this.highscorePanel.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScore)).BeginInit();
             this.SuspendLayout();
             // 
             // tutorialButton
@@ -452,11 +452,11 @@ namespace Computer_Prototype
             this.tableLayoutPanel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel6.BackgroundImage")));
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 618F));
-            this.tableLayoutPanel6.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 569F));
             this.tableLayoutPanel6.Controls.Add(this.button2, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.button1, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.pictureBox2, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.labelScore, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.pictureBoxScore, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, -3);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -469,25 +469,25 @@ namespace Computer_Prototype
             this.tableLayoutPanel6.TabIndex = 4;
             this.tableLayoutPanel6.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel6_Paint);
             // 
-            // label1
+            // labelScore
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(66, 377);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Good Job!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelScore.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelScore.AutoSize = true;
+            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScore.ForeColor = System.Drawing.Color.White;
+            this.labelScore.Location = new System.Drawing.Point(91, 377);
+            this.labelScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(329, 73);
+            this.labelScore.TabIndex = 0;
+            this.labelScore.Text = "Good Job!";
+            this.labelScore.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(523, 564);
+            this.button2.Location = new System.Drawing.Point(548, 564);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(495, 74);
@@ -500,7 +500,7 @@ namespace Computer_Prototype
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(525, 460);
+            this.button1.Location = new System.Drawing.Point(549, 460);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(492, 77);
@@ -509,17 +509,17 @@ namespace Computer_Prototype
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.nextForm_Click);
             // 
-            // pictureBox2
+            // pictureBoxScore
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(4, 95);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(454, 181);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxScore.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxScore.Location = new System.Drawing.Point(4, 95);
+            this.pictureBoxScore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBoxScore.Name = "pictureBoxScore";
+            this.pictureBoxScore.Size = new System.Drawing.Size(503, 181);
+            this.pictureBoxScore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxScore.TabIndex = 4;
+            this.pictureBoxScore.TabStop = false;
+            this.pictureBoxScore.Click += new System.EventHandler(this.pictureBoxScore_Click);
             // 
             // kinectTimer
             // 
@@ -537,10 +537,10 @@ namespace Computer_Prototype
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1051, 652);
-            this.Controls.Add(this.mainMenuPanel);
             this.Controls.Add(this.highscorePanel);
-            this.Controls.Add(this.moveListPanel);
             this.Controls.Add(this.gamePanel);
+            this.Controls.Add(this.mainMenuPanel);
+            this.Controls.Add(this.moveListPanel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -569,7 +569,7 @@ namespace Computer_Prototype
             this.highscorePanel.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScore)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -585,7 +585,7 @@ namespace Computer_Prototype
         private System.Windows.Forms.Panel highscorePanel;
         private System.Windows.Forms.Panel moveListPanel;
         private System.Windows.Forms.Panel gamePanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelScore;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -603,7 +603,7 @@ namespace Computer_Prototype
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private AxWMPLib.AxWindowsMediaPlayer videoTutorial;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private PictureBox pictureBoxScore;
         private Button buttonAbort;
         private PictureBox pictureBoxKinectVideoStream;
         public Timer kinectTimer;

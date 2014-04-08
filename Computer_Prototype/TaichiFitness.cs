@@ -15,11 +15,11 @@ namespace Computer_Prototype
         private static PictureBox kinectVideo;
         public int elapsedTime;
         public int pausedTime;
-        public const int PAUSE_TIME = 10;
+        public const int PAUSE_TIME = 100;
 
         int score;
         // formcode[form number, form segment time info]
-        private int[,] formCode = new int[,] { { 1, 10, 30, 40, 50 }, 
+        private int[,] formCode = new int[,] { { 135, 192, 275, 340, 383 }, 
                                                { 2, 2, 2, 2, 2 }, 
                                                { 3, 3, 3, 3, 3 } }; 
         //Singleton VideoFeed for Kinect
@@ -237,23 +237,6 @@ namespace Computer_Prototype
         {
             this.timerMoves.Enabled = false;
             //this.kinectTimer.Enabled = false;
-            switch (score)
-            {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-            }
                     
             if (this.labelGameMode.Text == "Tutorial")
             {
@@ -263,7 +246,7 @@ namespace Computer_Prototype
                 this.gamePanel.Hide();
             }
             else
-            {               
+            {
                 this.moveListPanel.Hide();
                 this.mainMenuPanel.Hide();
                 this.highscorePanel.Show();
@@ -285,6 +268,28 @@ namespace Computer_Prototype
                 }
                 else
                 {
+                    this.pictureBoxScore.Image = Image.FromFile("./misc/beta_pic/" + score + "_star.png");
+                    switch (score)
+                    {
+                        case 0:
+                            this.labelScore.Text = "Try Harder!";
+                            break;
+                        case 1:
+                            this.labelScore.Text = "Could be Better!";
+                            break;
+                        case 2:
+                            this.labelScore.Text = "Good Try!";
+                            break;
+                        case 3:
+                            this.labelScore.Text = "Good Job!";
+                            break;
+                        case 4:
+                            this.labelScore.Text = "Great!";
+                            break;
+                        case 5:
+                            this.labelScore.Text = "Amazing!";
+                            break;
+                    }
                     this.timerMoves.Enabled = false;
                     this.moveListPanel.Hide();
                     this.mainMenuPanel.Hide();
@@ -356,8 +361,8 @@ namespace Computer_Prototype
 
         private void timerMoves_Tick(object sender, EventArgs e)
         {
-            int[] angles = new int[10];
-            for (int i = 0; i < 10; i++)
+            int[] angles = new int[4];
+            for (int i = 0; i < 4; i++)
             {
                 angles[i] = 0;
             }
@@ -366,6 +371,12 @@ namespace Computer_Prototype
             {
                 if (elapsedTime == formCode[0, 0])
                 {
+                    angles[0] = 180;
+                    angles[1] = 90;
+                    angles[2] = 90;
+                    angles[3] = 180;
+
+                    kinect.angles = angles;
                     if (pausedTime < PAUSE_TIME)
                     {
                         this.videoTutorial.Ctlcontrols.pause();
@@ -373,7 +384,7 @@ namespace Computer_Prototype
                     }
                     else if (pausedTime >= PAUSE_TIME)
                     {
-                        // restart pause
+                        // reset pause
                         this.videoTutorial.Ctlcontrols.play();
                         pausedTime = 0;
                         elapsedTime++;
@@ -439,7 +450,13 @@ namespace Computer_Prototype
                         elapsedTime++;
                     }
                 }
-
+                else
+                {
+                    angles[0] = 0;
+                    angles[1] = 0;
+                    angles[2] = 0;
+                    angles[3] = 0;
+                }
                 if (pausedTime == 0)
                 {
                     elapsedTime++;
@@ -447,8 +464,31 @@ namespace Computer_Prototype
             }
             else if (this.labelGameMode.Text == this.buttonForm2.Text)
             {
-                if (elapsedTime == formCode[0, 0] || elapsedTime == formCode[0, 1] || elapsedTime == formCode[0, 2] || elapsedTime == formCode[0, 3] || elapsedTime == formCode[0, 4])
+                if (elapsedTime == formCode[0, 0])
                 {
+                    this.kinect.moveCompleted = true;
+                    angles[0] = 180;
+                    angles[1] = 90;
+                    angles[2] = 90;
+                    angles[3] = 180;
+
+                    kinect.angles = angles;
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // reset pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 1])
+                {
+                    this.kinect.moveCompleted = true;
                     if (pausedTime < PAUSE_TIME)
                     {
                         this.videoTutorial.Ctlcontrols.pause();
@@ -462,9 +502,62 @@ namespace Computer_Prototype
                         elapsedTime++;
                     }
                 }
-
-
-
+                else if (elapsedTime == formCode[0, 2])
+                {
+                    this.kinect.moveCompleted = true;
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 3])
+                {
+                    this.kinect.moveCompleted = true;
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else if (elapsedTime == formCode[0, 4])
+                {
+                    this.kinect.moveCompleted = true;
+                    if (pausedTime < PAUSE_TIME)
+                    {
+                        this.videoTutorial.Ctlcontrols.pause();
+                        pausedTime++;
+                    }
+                    else if (pausedTime >= PAUSE_TIME)
+                    {
+                        // restart pause
+                        this.videoTutorial.Ctlcontrols.play();
+                        pausedTime = 0;
+                        elapsedTime++;
+                    }
+                }
+                else
+                {
+                    angles[0] = 0;
+                    angles[1] = 0;
+                    angles[2] = 0;
+                    angles[3] = 0;
+                    this.kinect.moveCompleted = false;
+                }
                 if (pausedTime == 0)
                 {
                     elapsedTime++;
@@ -475,6 +568,11 @@ namespace Computer_Prototype
 
             }
             
+        }
+
+        private void pictureBoxScore_Click(object sender, EventArgs e)
+        {
+
         }
 
 
