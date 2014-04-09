@@ -11,6 +11,7 @@ namespace Computer_Prototype
 {       
     public class Kinect
     {
+        public string coords;
         private KinectSensor kinect;
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
@@ -68,7 +69,8 @@ namespace Computer_Prototype
             {
                 angles[i] = 0;
             }
-            moveCompleted = false;
+            this.moveCompleted = false;
+            this.coords = "kinect info";
         }
         
         public void updateKinect()
@@ -152,16 +154,17 @@ namespace Computer_Prototype
                                 }                               
                             }
                             // debug information
-                            TaichiFitness.kinect_info = "LE: " + skelAngle[0] + ",LC: " + skelAngle[1] + ",RC: " + skelAngle[2] + ",RE: " + skelAngle[3];
+                            coords = "LE: " + skelAngle[0] + ",LC: " + skelAngle[1] + ",RC: " + skelAngle[2] + ",RE: " + skelAngle[3];
+                            
                             Color color;
-                            if (moveCompleted)
-                            {
-                                color = Color.Green;
-                            }
-                            else
-                            {
-                                color = Color.Red;
-                            }
+                            //if (moveCompleted)
+                            //{
+                            //    color = Color.Green;
+                            //}
+                            //else
+                            //{
+                            //    color = Color.Red;
+                            //}
                             bool[] cond = new bool[4];
 
                             cond[0] = (skelAngle[0] < angles[0] + ERROR_TOLERANCE) && (skelAngle[0] > angles[0] - ERROR_TOLERANCE);
@@ -172,10 +175,13 @@ namespace Computer_Prototype
                             // TEST TO SEE IF THIS WORKS
                             if (cond[0] && cond[1] && cond[2] && cond[3])
                             {
+                                moveCompleted = true;
+                                coords = "Move completed!";
                                 color = Color.Green;
                             }
                             else
                             {
+                                moveCompleted = false;
                                 color = Color.Red;
                             }
 
