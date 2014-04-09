@@ -14,14 +14,18 @@ namespace Computer_Prototype
         private KinectSensor kinect;
         public Skeleton[] skeletonData;
         private byte[] colorPixels;
+        // dimensions of picturebox for Kinect
         int x, y;
+        // angles of limbs for feedback {left elbow,left shoulder,right shoulder,right elbow}
         public int[] angles;
-        Bitmap kinectSkel;
-        Bitmap kinectVideo;
-        Bitmap finalImage;
+
+        Bitmap kinectSkel,kinectVideo,finalImage;
         IntPtr colorPtr;
+
         Graphics graphics;
+        // dummy boolean
         public bool moveCompleted;
+        public int ERROR_TOLERANCE = 15;
 
         public Kinect()
         {                    
@@ -147,69 +151,62 @@ namespace Computer_Prototype
                                     skelAngle[i] = skelAngle[i] + 360;
                                 }                               
                             }
+                            // debug information
+                            TaichiFitness.kinect_info = "LE: " + skelAngle[0] + ",LC: " + skelAngle[1] + ",RC: " + skelAngle[2] + ",RE: " + skelAngle[3];
+                            Color color;
                             if (moveCompleted)
                             {
-                                DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics, Color.Green);
-
-                                // shoulders 
-                                DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Green);
-                                DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Green);
-
-                                // bicep/tricep
-                                DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Green);
-                                DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Green);
-                                // forearm
-
-                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Green);
-                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Green);
-
-                                // torso
-                                DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Green);
-
-                                // hips
-                                DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Green);
-                                DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Green);
-
-                                //// quads
-                                DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Green);
-                                DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Green);
-
-                                //// shin
-                                DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Green);
-                                DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Green);
+                                color = Color.Green;
                             }
                             else
                             {
-                                // head
-                                DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics, Color.Red);
-
-                                // shoulders 
-                                DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, Color.Red);
-                                DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, Color.Red);
-
-                                // bicep/tricep
-                                DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, Color.Red);
-                                DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, Color.Red);
-                                // forearm
-
-                                DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, Color.Red);
-                                DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, Color.Red);
-
-                                // torso
-                                DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, Color.Red);
-
-                                // hips
-                                DrawBone(JointType.HipRight, JointType.Spine, s, graphics, Color.Red);
-                                DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, Color.Red);
-
-                                //// quads
-                                DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, Color.Red);
-                                DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, Color.Red);
-
-                                //// shin
-                                DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, Color.Red);
-                                DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, Color.Red);
+                                color = Color.Red;
                             }
+                            bool[] cond = new bool[4];
+
+                            cond[0] = (skelAngle[0] < angles[0] + ERROR_TOLERANCE) && (skelAngle[0] > angles[0] - ERROR_TOLERANCE);
+                            cond[1] = (skelAngle[1] < angles[1] + ERROR_TOLERANCE) && (skelAngle[1] > angles[1] - ERROR_TOLERANCE);
+                            cond[2] = (skelAngle[2] < angles[2] + ERROR_TOLERANCE) && (skelAngle[2] > angles[2] - ERROR_TOLERANCE);
+                            cond[3] = (skelAngle[3] < angles[3] + ERROR_TOLERANCE) && (skelAngle[3] > angles[3] - ERROR_TOLERANCE);
+
+                            // TEST TO SEE IF THIS WORKS
+                            if (cond[0] && cond[1] && cond[2] && cond[3])
+                            {
+                                color = Color.Green;
+                            }
+                            else
+                            {
+                                color = Color.Red;
+                            }
+
+                            DrawBone(JointType.Head, JointType.ShoulderCenter, s, graphics, color);
+
+                            // shoulders 
+                            DrawBone(JointType.ShoulderLeft, JointType.ShoulderCenter, s, graphics, color);
+                            DrawBone(JointType.ShoulderRight, JointType.ShoulderCenter, s, graphics, color);
+
+                            // bicep/tricep
+                            DrawBone(JointType.ElbowRight, JointType.ShoulderRight, s, graphics, color);
+                            DrawBone(JointType.ElbowLeft, JointType.ShoulderLeft, s, graphics, color);
+                            // forearm
+
+                            DrawBone(JointType.ElbowRight, JointType.WristRight, s, graphics, color);
+                            DrawBone(JointType.ElbowLeft, JointType.WristLeft, s, graphics, color);
+
+                            // torso
+                            DrawBone(JointType.ShoulderCenter, JointType.Spine, s, graphics, color);
+
+                            // hips
+                            DrawBone(JointType.HipRight, JointType.Spine, s, graphics, color);
+                            DrawBone(JointType.HipLeft, JointType.Spine, s, graphics, color);
+
+                            //// quads
+                            DrawBone(JointType.HipRight, JointType.KneeRight, s, graphics, color);
+                            DrawBone(JointType.HipLeft, JointType.KneeLeft, s, graphics, color);
+
+                            //// shin
+                            DrawBone(JointType.AnkleLeft, JointType.KneeLeft, s, graphics, color);
+                            DrawBone(JointType.AnkleRight, JointType.KneeRight, s, graphics, color);
                            
                         }
 

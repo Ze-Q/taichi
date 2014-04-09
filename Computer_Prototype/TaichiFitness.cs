@@ -16,6 +16,7 @@ namespace Computer_Prototype
         public int elapsedTime;
         public int pausedTime;
         public const int PAUSE_TIME = 100;
+        public static string kinect_info = "kinect info";
 
         int score;
         // formcode[form number, form segment time info]
@@ -452,10 +453,10 @@ namespace Computer_Prototype
                 }
                 else
                 {
-                    angles[0] = 0;
-                    angles[1] = 0;
-                    angles[2] = 0;
-                    angles[3] = 0;
+                    angles[0] = -1;
+                    angles[1] = -1;
+                    angles[2] = -1;
+                    angles[3] = -1;
                 }
                 if (pausedTime == 0)
                 {
@@ -571,6 +572,11 @@ namespace Computer_Prototype
         }
 
         private void pictureBoxScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
