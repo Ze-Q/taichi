@@ -25,7 +25,7 @@ namespace Computer_Prototype
         Graphics graphics;
         // dummy boolean
         public bool moveCompleted;
-        public int ERROR_TOLERANCE = 15;
+        public const int ERROR_TOLERANCE = 15;
 
         public Kinect()
         {                    

@@ -17,8 +17,8 @@ namespace Computer_Prototype
         public int pausedTime;
         public const int PAUSE_TIME = 100;
         public static string kinect_info = "kinect info";
-
-        int score;
+        public bool moveCompleted;
+        public int score;
         // formcode[form number, form segment time info]
         private int[,] formCode = new int[,] { { 135, 192, 275, 340, 383 }, 
                                                { 2, 2, 2, 2, 2 }, 
@@ -41,6 +41,7 @@ namespace Computer_Prototype
             elapsedTime = 0;
             pausedTime = 0;
             score = 0;
+            moveCompleted = false;
             kinectVideo = this.pictureBoxKinectVideoStream;
             //kinectTimer.Enabled = false ;
             kinect = new Kinect();
@@ -479,7 +480,7 @@ namespace Computer_Prototype
                         this.videoTutorial.Ctlcontrols.pause();
                         pausedTime++;
                     }
-                    else if (pausedTime >= PAUSE_TIME)
+                    if (pausedTime >= PAUSE_TIME || moveCompleted)
                     {
                         // reset pause
                         this.videoTutorial.Ctlcontrols.play();
@@ -495,7 +496,7 @@ namespace Computer_Prototype
                         this.videoTutorial.Ctlcontrols.pause();
                         pausedTime++;
                     }
-                    else if (pausedTime >= PAUSE_TIME)
+                    else if (pausedTime >= PAUSE_TIME || moveCompleted)
                     {
                         // restart pause
                         this.videoTutorial.Ctlcontrols.play();
@@ -511,7 +512,7 @@ namespace Computer_Prototype
                         this.videoTutorial.Ctlcontrols.pause();
                         pausedTime++;
                     }
-                    else if (pausedTime >= PAUSE_TIME)
+                    else if (pausedTime >= PAUSE_TIME || moveCompleted)
                     {
                         // restart pause
                         this.videoTutorial.Ctlcontrols.play();
@@ -527,7 +528,7 @@ namespace Computer_Prototype
                         this.videoTutorial.Ctlcontrols.pause();
                         pausedTime++;
                     }
-                    else if (pausedTime >= PAUSE_TIME)
+                    else if (pausedTime >= PAUSE_TIME || moveCompleted)
                     {
                         // restart pause
                         this.videoTutorial.Ctlcontrols.play();
@@ -543,7 +544,7 @@ namespace Computer_Prototype
                         this.videoTutorial.Ctlcontrols.pause();
                         pausedTime++;
                     }
-                    else if (pausedTime >= PAUSE_TIME)
+                    else if (pausedTime >= PAUSE_TIME || moveCompleted)
                     {
                         // restart pause
                         this.videoTutorial.Ctlcontrols.play();
